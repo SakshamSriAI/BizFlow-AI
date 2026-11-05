@@ -77,10 +77,12 @@ const navSections: NavSectionDef[] = [
   {
     title: "FINANCE",
     items: [
+      { title: "Overview", href: "/finance/overview", icon: BarChart3 },
       { title: "Income", href: "/finance/income", icon: ArrowDownLeft },
       { title: "Expenses", href: "/finance/expenses", icon: ArrowUpRight },
+      { title: "Categories", href: "/finance/categories", icon: PieChart },
       { title: "Invoices", href: "/finance/invoices", icon: FileText, badge: "3", badgeVariant: "warning" },
-      { title: "Payments", href: "/finance/payments", icon: CreditCard },
+      { title: "Transactions", href: "/finance/transactions", icon: CreditCard },
     ],
   },
   {

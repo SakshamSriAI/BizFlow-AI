@@ -155,17 +155,14 @@ export function RecentActivityTabs({
                       </Badge>
                     </TableCell>
                     <TableCell className="text-right">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() =>
-                          alert(
-                            `Invoice ${inv.invoiceNumber} for ${inv.clientName} (${currencySymbol}${inv.amount.toLocaleString()}) ready for inspection in Phase 6 Invoicing module.`
-                          )
-                        }
-                      >
-                        Inspect
-                      </Button>
+                      <Link href={`/finance/invoices`}>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                        >
+                          Inspect
+                        </Button>
+                      </Link>
                     </TableCell>
                   </TableRow>
                 ))}

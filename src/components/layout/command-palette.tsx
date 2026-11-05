@@ -18,6 +18,7 @@ import {
   CreditCard,
   CheckSquare,
   BarChart3,
+  TrendingUp,
   Settings,
   PlusCircle,
   X,
@@ -119,6 +120,20 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       category: "Navigation",
       icon: BarChart3,
       href: "/analytics/reports",
+    },
+    {
+      id: "nav-sales-analytics",
+      title: "Sales Analytics",
+      category: "Navigation",
+      icon: TrendingUp,
+      href: "/analytics/sales",
+    },
+    {
+      id: "nav-financial-analytics",
+      title: "Financial Analytics",
+      category: "Navigation",
+      icon: CreditCard,
+      href: "/analytics/financial",
     },
     {
       id: "act-lead",

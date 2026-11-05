@@ -56,7 +56,7 @@ const navSections: NavSectionDef[] = [
   {
     title: "OVERVIEW",
     items: [
-      { title: "Dashboard", href: "/", icon: LayoutDashboard },
+      { title: "Dashboard", href: "/app", icon: LayoutDashboard },
       {
         title: "AI Assistant",
         href: "/ai-assistant",
@@ -126,8 +126,8 @@ export function Sidebar({
   };
 
   const isItemActive = (href: string) => {
-    if (href === "/") {
-      return pathname === "/";
+    if (href === "/app") {
+      return pathname === "/app" || pathname === "/app/";
     }
     return pathname.startsWith(href);
   };

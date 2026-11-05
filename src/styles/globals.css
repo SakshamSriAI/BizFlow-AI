@@ -4,33 +4,49 @@
 
 @layer base {
   :root {
-    --background: #f8fafc;
-    --foreground: #0f172a;
+    /* Nexora Premium Design System Tokens */
+    --background: #f7f9fb;
+    --foreground: #17212b;
 
     --card: #ffffff;
-    --card-foreground: #0f172a;
+    --card-foreground: #17212b;
 
     --popover: #ffffff;
-    --popover-foreground: #0f172a;
+    --popover-foreground: #17212b;
 
-    --primary: #4f46e5;
+    /* Primary Accent (#2F80ED) */
+    --primary: #2f80ed;
     --primary-foreground: #ffffff;
 
-    --secondary: #f1f5f9;
-    --secondary-foreground: #1e293b;
+    /* Secondary Neutral */
+    --secondary: #f0f4f8;
+    --secondary-foreground: #17212b;
 
-    --muted: #f1f5f9;
-    --muted-foreground: #64748b;
+    /* Muted Text & Backgrounds */
+    --muted: #f0f4f8;
+    --muted-foreground: #667482;
 
-    --accent: #eef2ff;
-    --accent-foreground: #4338ca;
+    /* Light Accent Surface */
+    --accent: #ebf3fc;
+    --accent-foreground: #2f80ed;
 
+    /* Secondary Accent (#20B8A5) */
+    --brand-teal: #20b8a5;
+    --brand-teal-surface: #e8f8f6;
+
+    /* Dark Surfaces */
+    --brand-dark: #101820;
+    --brand-dark-surface: #17232d;
+    --brand-dark-text: #f7f9fb;
+
+    /* System Status */
     --destructive: #ef4444;
     --destructive-foreground: #ffffff;
 
-    --border: #e2e8f0;
-    --input: #e2e8f0;
-    --ring: #4f46e5;
+    /* Borders & Dividers (#E3E9EF) */
+    --border: #e3e9ef;
+    --input: #e3e9ef;
+    --ring: #2f80ed;
 
     --radius: 0.5rem;
   }
@@ -42,6 +58,11 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    background-color: #ebf3fc;
+    color: #2f80ed;
   }
 }
 
@@ -56,10 +77,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #d4dde5;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #a9b7c6;
 }

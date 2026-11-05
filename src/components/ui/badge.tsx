@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "secondary" | "success" | "warning" | "danger" | "outline" | "indigo";
+  variant?: "default" | "secondary" | "success" | "warning" | "danger" | "outline" | "indigo" | "teal" | "accent" | "dark";
   size?: "sm" | "md";
   dot?: boolean;
 }
@@ -16,23 +16,29 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const variantStyles = {
-    default: "bg-slate-100 text-slate-800 border-slate-200",
-    secondary: "bg-slate-50 text-slate-600 border-slate-200",
-    indigo: "bg-indigo-50 text-indigo-700 border-indigo-200/60",
-    success: "bg-emerald-50 text-emerald-700 border-emerald-200/60",
-    warning: "bg-amber-50 text-amber-700 border-amber-200/60",
-    danger: "bg-rose-50 text-rose-700 border-rose-200/60",
-    outline: "border-slate-200 text-slate-600 bg-transparent",
+    default: "bg-[#F0F4F8] text-[#17212B] border-[#E3E9EF]",
+    secondary: "bg-[#F7F9FB] text-[#667482] border-[#E3E9EF]",
+    indigo: "bg-[#EBF3FC] text-[#2F80ED] border-[#C4DEFA]",
+    accent: "bg-[#EBF3FC] text-[#2F80ED] border-[#C4DEFA]",
+    teal: "bg-[#E8F8F6] text-[#138A7B] border-[#BCEEE7]",
+    success: "bg-[#E8F8F6] text-[#138A7B] border-[#BCEEE7]",
+    warning: "bg-[#FEF9EE] text-[#B45309] border-[#FDE68A]",
+    danger: "bg-[#FEF2F2] text-[#DC2626] border-[#FECACA]",
+    dark: "bg-[#17232D] text-[#F7F9FB] border-[#2A3B4C]",
+    outline: "border-[#E3E9EF] text-[#667482] bg-transparent",
   };
 
   const dotColorStyles = {
-    default: "bg-slate-500",
-    secondary: "bg-slate-400",
-    indigo: "bg-indigo-500",
-    success: "bg-emerald-500",
-    warning: "bg-amber-500",
-    danger: "bg-rose-500",
-    outline: "bg-slate-400",
+    default: "bg-[#667482]",
+    secondary: "bg-[#667482]",
+    indigo: "bg-[#2F80ED]",
+    accent: "bg-[#2F80ED]",
+    teal: "bg-[#20B8A5]",
+    success: "bg-[#20B8A5]",
+    warning: "bg-[#F59E0B]",
+    danger: "bg-[#EF4444]",
+    dark: "bg-[#20B8A5]",
+    outline: "bg-[#667482]",
   };
 
   const sizeStyles = {

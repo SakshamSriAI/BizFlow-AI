@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import {
   Search,
   Bell,
@@ -136,17 +137,23 @@ export function Topbar({
                   </button>
                 ))}
               </div>
-              <div className="mt-1.5 pt-1.5 border-t border-slate-100">
-                <button
-                  onClick={() => {
-                    alert("Business Onboarding & Workspace Creation will be configured in Phase 1.");
-                    setWorkspaceOpen(false);
-                  }}
+              <div className="mt-1.5 pt-1.5 border-t border-slate-100 space-y-0.5">
+                <Link
+                  href="/onboarding"
+                  onClick={() => setWorkspaceOpen(false)}
                   className="w-full flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-indigo-600 hover:bg-indigo-50 font-medium transition-colors"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Create new workspace</span>
-                </button>
+                </Link>
+                <Link
+                  href="/workspaces"
+                  onClick={() => setWorkspaceOpen(false)}
+                  className="w-full flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-100 font-medium transition-colors"
+                >
+                  <Command className="w-3.5 h-3.5 text-slate-400" />
+                  <span>Manage all workspaces</span>
+                </Link>
               </div>
             </div>
           )}
@@ -330,16 +337,14 @@ export function Topbar({
               </div>
 
               <div className="pt-1 border-t border-slate-100">
-                <button
-                  onClick={() => {
-                    setUserMenuOpen(false);
-                    alert("Mock authentication logout triggered. Phase 1 provides full auth flows.");
-                  }}
+                <Link
+                  href="/login"
+                  onClick={() => setUserMenuOpen(false)}
                   className="w-full flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-rose-600 hover:bg-rose-50 transition-colors"
                 >
                   <LogOut className="w-3.5 h-3.5 text-rose-500" />
                   <span>Log out</span>
-                </button>
+                </Link>
               </div>
             </div>
           )}

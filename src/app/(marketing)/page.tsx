@@ -341,7 +341,7 @@ export default function MarketingLandingPage() {
 
         {/* Primary & Secondary CTAs */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-          <Link href="/app">
+          <Link href="/signup">
             <Button
               variant="primary"
               size="lg"
@@ -777,7 +777,7 @@ export default function MarketingLandingPage() {
               </div>
 
               {/* Action Button */}
-              <Link href="/app" className="w-full">
+              <Link href="/signup" className="w-full">
                 <Button
                   variant={plan.popular ? "primary" : "outline"}
                   size="md"
@@ -869,7 +869,7 @@ export default function MarketingLandingPage() {
             </p>
 
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link href="/app">
+              <Link href="/signup">
                 <Button
                   variant="primary"
                   size="lg"

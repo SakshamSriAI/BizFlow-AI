@@ -66,12 +66,12 @@ export function MarketingNavbar() {
 
           {/* Right Action Buttons */}
           <div className="hidden sm:flex items-center gap-3">
-            <Link href="/app">
+            <Link href="/login">
               <Button variant="ghost" size="sm">
                 Log in
               </Button>
             </Link>
-            <Link href="/app">
+            <Link href="/signup">
               <Button
                 variant="primary"
                 size="sm"
@@ -111,12 +111,12 @@ export function MarketingNavbar() {
           </div>
 
           <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
-            <Link href="/app" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
               <Button variant="outline" size="md" className="w-full justify-center">
                 Log in
               </Button>
             </Link>
-            <Link href="/app" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/signup" onClick={() => setMobileMenuOpen(false)}>
               <Button variant="primary" size="md" className="w-full justify-center">
                 Get Started Free
               </Button>

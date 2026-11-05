@@ -6,7 +6,7 @@ import { Loader2 } from "lucide-react";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "destructive" | "link";
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "destructive" | "link" | "dark";
   size?: "sm" | "md" | "lg" | "icon";
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
@@ -32,13 +32,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       "inline-flex items-center justify-center font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none text-sm";
 
     const variantStyles = {
-      primary: "bg-primary text-white hover:bg-primary-600 shadow-sm active:bg-primary-700",
-      secondary: "bg-slate-100 text-slate-800 hover:bg-slate-200 active:bg-slate-300",
+      primary: "bg-[#2F80ED] text-white hover:bg-[#1E65D0] shadow-xs active:bg-[#174FA7]",
+      secondary: "bg-[#F0F4F8] text-[#17212B] hover:bg-[#E3E9EF] active:bg-[#D4DDE5]",
       outline:
-        "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:text-slate-900 shadow-xs active:bg-slate-100",
-      ghost: "text-slate-600 hover:bg-slate-100 hover:text-slate-900 active:bg-slate-200",
-      destructive: "bg-destructive text-white hover:bg-red-600 shadow-sm active:bg-red-700",
-      link: "text-primary underline-offset-4 hover:underline p-0 h-auto font-normal",
+        "border border-[#E3E9EF] bg-white text-[#17212B] hover:bg-[#F7F9FB] hover:text-[#101820] shadow-2xs active:bg-[#F0F4F8]",
+      ghost: "text-[#667482] hover:bg-[#F0F4F8] hover:text-[#17212B] active:bg-[#E3E9EF]",
+      destructive: "bg-destructive text-white hover:bg-red-600 shadow-xs active:bg-red-700",
+      link: "text-[#2F80ED] underline-offset-4 hover:underline p-0 h-auto font-normal",
+      dark: "bg-[#101820] text-[#F7F9FB] hover:bg-[#17232D] shadow-xs border border-[#17232D] active:bg-black",
     };
 
     const sizeStyles = {

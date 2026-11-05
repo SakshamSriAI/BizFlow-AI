@@ -102,8 +102,8 @@ export default function PaymentsPage() {
       case "stripe":
       case "card":
         return (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs bg-violet-50 text-violet-700 border border-violet-200">
-            <CreditCard className="w-3 h-3 text-violet-600" /> Card / Gateway
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs bg-[#EBF3FC] text-[#2F80ED] border border-[#C4DEFA]">
+            <CreditCard className="w-3 h-3 text-[#2F80ED]" /> Card / Gateway
           </span>
         );
       default:
@@ -168,7 +168,7 @@ export default function PaymentsPage() {
         <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between text-xs text-slate-500 mb-1 font-medium">
             <span>Average Payment</span>
-            <TrendingUp className="w-4 h-4 text-violet-500" />
+            <TrendingUp className="w-4 h-4 text-[#20B8A5]" />
           </div>
           <div className="text-2xl font-bold text-slate-900">
             {formatMoney(

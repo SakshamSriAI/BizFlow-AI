@@ -260,8 +260,8 @@ export default function AIAssistantPage() {
             /* Empty State Hero */
             <div className="max-w-2xl mx-auto py-8 space-y-8 animate-fade-in">
               <div className="text-center space-y-3">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white mx-auto shadow-md border border-blue-400">
-                  <Bot className="w-7 h-7 text-white" />
+                <div className="w-14 h-14 rounded-2xl bg-[#101820] flex items-center justify-center text-[#20B8A5] mx-auto shadow-md border border-[#263746]">
+                  <Bot className="w-7 h-7 text-[#20B8A5]" />
                 </div>
                 <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
                   Welcome to Nexora AI Copilot

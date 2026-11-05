@@ -83,7 +83,7 @@ export default function TeamSettingsPage() {
         );
       case "sales_rep":
         return (
-          <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-violet-50 text-violet-700 border border-violet-200 uppercase">
+          <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#EBF3FC] text-[#2F80ED] border border-[#C4DEFA] uppercase">
             Sales Exec
           </span>
         );

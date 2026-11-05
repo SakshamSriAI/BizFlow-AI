@@ -179,7 +179,7 @@ export default function QuotationsPage() {
         <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between text-xs text-slate-500 mb-1 font-medium">
             <span>Conversion Rate</span>
-            <TrendingUp className="w-4 h-4 text-violet-500" />
+            <TrendingUp className="w-4 h-4 text-[#20B8A5]" />
           </div>
           <div className="text-2xl font-bold text-slate-900">
             {conversionRate}%
@@ -302,7 +302,7 @@ export default function QuotationsPage() {
 
                         {q.status === "converted" && q.convertedInvoiceId && (
                           <Link href={`/finance/invoices`}>
-                            <span className="text-[11px] text-violet-700 font-semibold hover:underline flex items-center gap-0.5">
+                            <span className="text-[11px] text-[#2F80ED] font-semibold hover:underline flex items-center gap-0.5">
                               View Invoice <ArrowRight className="w-3 h-3" />
                             </span>
                           </Link>

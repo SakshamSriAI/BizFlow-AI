@@ -226,12 +226,12 @@ export function AIChatSimulation() {
       </div>
 
       {/* Illustrative Disclaimer Notice */}
-      <div className="mt-2 pt-3 border-t border-[#E3E9EF] flex items-center justify-between text-[11px] text-[#667482]">
-        <span className="flex items-center gap-1">
-          <AlertCircle className="w-3.5 h-3.5 text-[#667482]" />
-          Illustrative mock conversation. Nexora AI runs against your actual workspace data once connected.
+      <div className="mt-2 pt-3 border-t border-[#E3E9EF] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-[#667482]">
+        <span className="flex items-center gap-1.5">
+          <AlertCircle className="w-3.5 h-3.5 text-[#667482] shrink-0" />
+          <span>Illustrative mock conversation. Nexora AI runs against your actual workspace data once connected.</span>
         </span>
-        <span className="font-mono text-[#2F80ED]">Interactive Mode</span>
+        <span className="font-mono text-[#2F80ED] text-[10px] sm:text-[11px] self-end sm:self-auto">Interactive Mode</span>
       </div>
     </div>
   );

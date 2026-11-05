@@ -33,7 +33,7 @@ export function DashboardPreview() {
           <span className="w-1.5 h-1.5 rounded-full bg-[#20B8A5] inline-block animate-pulse" />
           app.nexora.io/overview
         </div>
-        <div className="text-[11px] text-[#667482] font-medium flex items-center gap-1.5">
+        <div className="hidden sm:flex text-[11px] text-[#667482] font-medium items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-[#2F80ED]" />
           <span>Nexora Enterprise</span>
         </div>

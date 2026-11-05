@@ -284,7 +284,7 @@ export default function MarketingLandingPage() {
     solutions.find((s) => s.id === selectedSolution) || solutions[0];
 
   return (
-    <div className="space-y-24 sm:space-y-32 pt-28 pb-20 selection:bg-[#EBF3FC] selection:text-[#2F80ED]">
+    <div className="space-y-24 sm:space-y-32 pt-28 pb-20 selection:bg-[#EBF3FC] selection:text-[#2F80ED] overflow-x-hidden w-full max-w-full">
       {/* =========================================================================
           SECTION 1: HERO SECTION
          ========================================================================= */}
@@ -319,7 +319,7 @@ export default function MarketingLandingPage() {
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#17212B] max-w-4xl mx-auto leading-[1.08]"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#17212B] max-w-4xl mx-auto leading-[1.1] sm:leading-[1.08]"
         >
           Your Business Runs Better <br className="hidden sm:inline" />
           <span className="text-[#2F80ED]">With Nexora.</span>
@@ -588,7 +588,7 @@ export default function MarketingLandingPage() {
               </p>
 
               {/* Mini Pipeline Preview */}
-              <div className="mt-6 grid grid-cols-3 gap-3 p-3 rounded-xl bg-[#F7F9FB] border border-[#E3E9EF]">
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 p-3 rounded-xl bg-[#F7F9FB] border border-[#E3E9EF]">
                 <div className="p-2.5 rounded-lg bg-white border border-[#E3E9EF] text-xs space-y-1">
                   <span className="text-[10px] text-[#667482] uppercase font-semibold">Discovery</span>
                   <div className="font-bold text-[#17212B]">Acme Corp</div>
@@ -776,7 +776,7 @@ export default function MarketingLandingPage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pt-8">
             <div className="p-4 rounded-xl bg-[#F7F9FB] border border-[#E3E9EF] space-y-2">
               <span className="text-[11px] font-semibold text-[#667482] uppercase">New Inquiries</span>
               <div className="text-xl font-bold text-[#17212B]">12 Leads</div>
@@ -1077,11 +1077,11 @@ export default function MarketingLandingPage() {
           </p>
 
           {/* Monthly / Annual Toggle */}
-          <div className="mt-6 inline-flex items-center gap-3 p-1 rounded-full bg-[#F0F4F8] border border-[#E3E9EF] text-xs">
+          <div className="mt-6 inline-flex items-center gap-2 sm:gap-3 p-1 rounded-full bg-[#F0F4F8] border border-[#E3E9EF] text-xs">
             <button
               onClick={() => setBillingCycle("monthly")}
               className={cn(
-                "px-4 py-1.5 rounded-full font-medium transition-all",
+                "px-3.5 sm:px-4 py-2 rounded-full font-medium transition-all text-xs",
                 billingCycle === "monthly"
                   ? "bg-white text-[#17212B] shadow-2xs font-semibold"
                   : "text-[#667482] hover:text-[#17212B]"
@@ -1092,7 +1092,7 @@ export default function MarketingLandingPage() {
             <button
               onClick={() => setBillingCycle("annual")}
               className={cn(
-                "px-4 py-1.5 rounded-full font-medium transition-all flex items-center gap-1.5",
+                "px-3.5 sm:px-4 py-2 rounded-full font-medium transition-all flex items-center gap-1.5 text-xs",
                 billingCycle === "annual"
                   ? "bg-white text-[#17212B] shadow-2xs font-semibold"
                   : "text-[#667482] hover:text-[#17212B]"
@@ -1235,7 +1235,7 @@ export default function MarketingLandingPage() {
                 <button
                   type="button"
                   onClick={() => toggleFaq(idx)}
-                  className="w-full flex items-center justify-between p-5 text-left text-sm font-semibold text-[#17212B] hover:text-[#2F80ED] transition-colors"
+                  className="w-full flex items-center justify-between p-4 sm:p-5 text-left text-xs sm:text-sm font-semibold text-[#17212B] hover:text-[#2F80ED] transition-colors"
                 >
                   <span>{faq.q}</span>
                   <ChevronDown

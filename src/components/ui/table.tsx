@@ -21,7 +21,7 @@ export function TableHeader({
 }: React.HTMLAttributes<HTMLTableSectionElement>) {
   return (
     <thead
-      className={cn("bg-slate-50/70 border-b border-slate-200/80 text-xs font-semibold text-slate-500 uppercase tracking-wider", className)}
+      className={cn("bg-[#F7F9FB] border-b border-[#E3E9EF] text-xs font-semibold text-[#667482] uppercase tracking-wider", className)}
       {...props}
     />
   );
@@ -33,7 +33,7 @@ export function TableBody({
 }: React.HTMLAttributes<HTMLTableSectionElement>) {
   return (
     <tbody
-      className={cn("divide-y divide-slate-100 bg-white", className)}
+      className={cn("divide-y divide-[#E3E9EF] bg-white", className)}
       {...props}
     />
   );
@@ -46,7 +46,7 @@ export function TableRow({
   return (
     <tr
       className={cn(
-        "transition-colors hover:bg-slate-50/60 data-[state=selected]:bg-slate-50",
+        "transition-colors hover:bg-[#F7F9FB]/80 data-[state=selected]:bg-[#EBF3FC]",
         className
       )}
       {...props}
@@ -61,7 +61,7 @@ export function TableHead({
   return (
     <th
       className={cn(
-        "h-10 px-4 text-left align-middle font-medium text-slate-500 text-xs select-none",
+        "h-10 px-4 text-left align-middle font-semibold text-[#667482] text-xs select-none",
         className
       )}
       {...props}
@@ -75,7 +75,7 @@ export function TableCell({
 }: React.TdHTMLAttributes<HTMLTableCellElement>) {
   return (
     <td
-      className={cn("p-4 align-middle text-slate-700 text-sm", className)}
+      className={cn("p-4 align-middle text-[#17212B] text-sm", className)}
       {...props}
     />
   );
@@ -94,9 +94,9 @@ export function TableEmptyState({
 }) {
   return (
     <div className="py-12 flex flex-col items-center justify-center text-center px-4">
-      {icon && <div className="text-slate-300 mb-3">{icon}</div>}
-      <h4 className="text-sm font-semibold text-slate-900">{title}</h4>
-      <p className="text-xs text-slate-500 max-w-sm mt-1">{description}</p>
+      {icon && <div className="text-[#667482]/40 mb-3">{icon}</div>}
+      <h4 className="text-sm font-semibold text-[#17212B]">{title}</h4>
+      <p className="text-xs text-[#667482] max-w-sm mt-1">{description}</p>
       {action && <div className="mt-4">{action}</div>}
     </div>
   );

@@ -46,7 +46,7 @@ interface NavItemDef {
   href: string;
   icon: React.ComponentType<{ className?: string }>;
   badge?: string | number;
-  badgeVariant?: "default" | "success" | "warning" | "danger" | "indigo";
+  badgeVariant?: "default" | "success" | "warning" | "danger" | "indigo" | "teal" | "accent";
 }
 
 interface NavSectionDef {
@@ -64,14 +64,14 @@ const navSections: NavSectionDef[] = [
         href: "/ai-assistant",
         icon: Bot,
         badge: "AI",
-        badgeVariant: "indigo",
+        badgeVariant: "accent",
       },
       {
         title: "AI Agents",
         href: "/ai-agents",
         icon: Sparkles,
         badge: "5",
-        badgeVariant: "success",
+        badgeVariant: "teal",
       },
     ],
   },
@@ -149,20 +149,20 @@ export function Sidebar({
   const sidebarContent = (
     <div className="flex flex-col h-full bg-white select-none">
       {/* Brand Header */}
-      <div className="h-14 flex items-center justify-between px-4 border-b border-slate-100 shrink-0">
-        <Link href="/app" className="flex items-center gap-2.5 overflow-hidden">
-          <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-base shadow-xs shrink-0 tracking-tight">
+      <div className="h-14 flex items-center justify-between px-4 border-b border-[#E3E9EF] shrink-0">
+        <Link href="/app" className="flex items-center gap-2.5 overflow-hidden group">
+          <div className="w-8 h-8 rounded-lg bg-[#101820] flex items-center justify-center text-[#F7F9FB] font-bold text-sm shadow-xs shrink-0 tracking-tight group-hover:bg-[#17232D] transition-colors">
             N
           </div>
           {!isCollapsed && (
             <div className="flex flex-col leading-none">
-              <span className="font-bold text-slate-900 text-sm tracking-tight flex items-center gap-1.5">
+              <span className="font-bold text-[#17212B] text-sm tracking-tight flex items-center gap-1.5">
                 Nexora
-                <span className="text-[10px] font-semibold uppercase tracking-wider px-1 py-0.2 rounded bg-indigo-50 text-indigo-700 border border-indigo-200/60">
-                  v1.0
+                <span className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.2 rounded-full bg-[#EBF3FC] text-[#2F80ED] border border-[#C4DEFA]">
+                  PRO
                 </span>
               </span>
-              <span className="text-[11px] text-slate-400 mt-0.5">Business Platform</span>
+              <span className="text-[11px] text-[#667482] mt-0.5 font-medium">Business OS</span>
             </div>
           )}
         </Link>
@@ -170,7 +170,7 @@ export function Sidebar({
         {/* Desktop Collapse Toggle */}
         <button
           onClick={onToggleCollapse}
-          className="hidden md:flex items-center justify-center w-6 h-6 rounded-md text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+          className="hidden md:flex items-center justify-center w-6 h-6 rounded-md text-[#667482] hover:text-[#17212B] hover:bg-[#F0F4F8] transition-colors"
           title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           {isCollapsed ? (
@@ -192,12 +192,12 @@ export function Sidebar({
                 <button
                   type="button"
                   onClick={() => toggleSection(section.title)}
-                  className="w-full flex items-center justify-between px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-slate-400 hover:text-slate-600 transition-colors"
+                  className="w-full flex items-center justify-between px-2 py-1 text-[11px] font-bold uppercase tracking-wider text-[#667482] hover:text-[#17212B] transition-colors"
                 >
                   <span>{section.title}</span>
                   <ChevronDown
                     className={cn(
-                      "w-3 h-3 text-slate-400 transition-transform duration-200",
+                      "w-3 h-3 text-[#667482] transition-transform duration-200",
                       isSectionCollapsed && "-rotate-90"
                     )}
                   />
@@ -219,22 +219,22 @@ export function Sidebar({
                         className={cn(
                           "group relative flex items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-all duration-150",
                           active
-                            ? "bg-indigo-50/80 text-indigo-700 font-semibold"
-                            : "text-slate-600 hover:bg-slate-100/80 hover:text-slate-900",
+                            ? "bg-[#EBF3FC] text-[#2F80ED] font-semibold"
+                            : "text-[#667482] hover:bg-[#F0F4F8] hover:text-[#17212B]",
                           isCollapsed && "justify-center px-2"
                         )}
                       >
                         {/* Active indicator bar */}
                         {active && (
-                          <span className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-r-md bg-indigo-600" />
+                          <span className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-r-md bg-[#2F80ED]" />
                         )}
 
                         <Icon
                           className={cn(
                             "w-4 h-4 shrink-0 transition-colors",
                             active
-                              ? "text-indigo-600"
-                              : "text-slate-400 group-hover:text-slate-600"
+                              ? "text-[#2F80ED]"
+                              : "text-[#667482] group-hover:text-[#17212B]"
                           )}
                         />
 
@@ -263,33 +263,33 @@ export function Sidebar({
 
       {/* AI Copilot Status Banner at bottom */}
       {!isCollapsed ? (
-        <div className="p-3 border-t border-slate-100 bg-slate-50/50 shrink-0">
-          <div className="rounded-xl border border-indigo-100 bg-linear-to-b from-indigo-50/50 to-white p-3">
+        <div className="p-3 border-t border-[#E3E9EF] bg-[#F7F9FB] shrink-0">
+          <div className="rounded-xl border border-[#263746] bg-[#101820] text-[#F7F9FB] p-3 shadow-2xs">
             <div className="flex items-center gap-2 mb-1.5">
-              <div className="w-5 h-5 rounded-md bg-indigo-600 flex items-center justify-center text-white">
+              <div className="w-5 h-5 rounded-md bg-[#17232D] text-[#20B8A5] flex items-center justify-center">
                 <Sparkles className="w-3 h-3" />
               </div>
-              <span className="text-xs font-semibold text-slate-800">
-                Business AI Engine
+              <span className="text-xs font-bold text-[#F7F9FB]">
+                Nexora AI Engine
               </span>
             </div>
-            <p className="text-[11px] text-slate-500 leading-relaxed mb-2.5">
-              5 autonomous workflows active and monitoring metrics.
+            <p className="text-[11px] text-[#A0B0C0] leading-relaxed mb-2">
+              Autonomous workflows active and monitoring metrics.
             </p>
             <div className="flex items-center justify-between text-[11px]">
-              <span className="inline-flex items-center gap-1.5 text-emerald-600 font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 text-[#20B8A5] font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#20B8A5] animate-pulse" />
                 Operational
               </span>
-              <span className="text-slate-400 font-mono">v1.2</span>
+              <span className="text-[#667482] font-mono text-[10px]">v2.0</span>
             </div>
           </div>
         </div>
       ) : (
-        <div className="p-2 border-t border-slate-100 flex justify-center">
+        <div className="p-2 border-t border-[#E3E9EF] flex justify-center">
           <div
-            className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 cursor-pointer hover:bg-indigo-100"
-            title="Business AI Engine: Operational"
+            className="w-8 h-8 rounded-lg bg-[#101820] text-[#20B8A5] flex items-center justify-center cursor-pointer hover:bg-[#17232D]"
+            title="Nexora AI Engine: Operational"
           >
             <Sparkles className="w-4 h-4" />
           </div>
@@ -303,7 +303,7 @@ export function Sidebar({
       {/* Desktop Persistent Sidebar */}
       <aside
         className={cn(
-          "hidden md:flex flex-col border-r border-slate-200/80 bg-white transition-[width] duration-200 ease-in-out shrink-0 z-30",
+          "hidden md:flex flex-col border-r border-[#E3E9EF] bg-white transition-[width] duration-200 ease-in-out shrink-0 z-30",
           isCollapsed ? "w-16" : "w-64"
         )}
       >
@@ -313,7 +313,7 @@ export function Sidebar({
       {/* Mobile Drawer Backdrop */}
       {isMobileOpen && (
         <div
-          className="fixed inset-0 z-40 bg-slate-900/40 backdrop-blur-xs md:hidden"
+          className="fixed inset-0 z-40 bg-[#101820]/50 backdrop-blur-xs md:hidden"
           onClick={onMobileClose}
           aria-hidden="true"
         />

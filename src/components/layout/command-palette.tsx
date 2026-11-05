@@ -226,20 +226,20 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} maxWidth="lg">
       <div className="-mt-2 space-y-3">
-        <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
-          <Search className="w-5 h-5 text-slate-400 shrink-0" />
+        <div className="flex items-center gap-2 border-b border-[#E3E9EF] pb-3">
+          <Search className="w-5 h-5 text-[#667482] shrink-0" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search commands, navigate pages, trigger workflows..."
-            className="w-full bg-transparent text-sm text-slate-900 placeholder:text-slate-400 outline-none"
+            className="w-full bg-transparent text-sm text-[#17212B] placeholder:text-[#667482]/60 outline-none font-medium"
             autoFocus
           />
           {query && (
             <button
               onClick={() => setQuery("")}
-              className="text-slate-400 hover:text-slate-600 text-xs"
+              className="text-[#667482] hover:text-[#17212B] text-xs font-medium"
             >
               Clear
             </button>
@@ -248,7 +248,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
 
         <div className="max-h-80 overflow-y-auto space-y-1">
           {filtered.length === 0 ? (
-            <div className="py-8 text-center text-xs text-slate-400">
+            <div className="py-8 text-center text-xs text-[#667482]">
               No matching commands or pages found.
             </div>
           ) : (
@@ -258,13 +258,13 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
                 <button
                   key={item.id}
                   onClick={() => handleSelect(item)}
-                  className="w-full flex items-center justify-between rounded-lg px-3 py-2 text-xs text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors group"
+                  className="w-full flex items-center justify-between rounded-lg px-3 py-2 text-xs text-[#17212B] hover:bg-[#EBF3FC] hover:text-[#2F80ED] transition-colors group"
                 >
                   <div className="flex items-center gap-2.5">
-                    <Icon className="w-4 h-4 text-slate-400 group-hover:text-indigo-600 transition-colors" />
-                    <span className="font-medium">{item.title}</span>
+                    <Icon className="w-4 h-4 text-[#667482] group-hover:text-[#2F80ED] transition-colors" />
+                    <span className="font-semibold">{item.title}</span>
                   </div>
-                  <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
+                  <span className="text-[10px] text-[#667482] uppercase tracking-wider font-semibold">
                     {item.category}
                   </span>
                 </button>
@@ -273,12 +273,12 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
           )}
         </div>
 
-        <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-[11px] text-slate-400">
+        <div className="flex items-center justify-between pt-2 border-t border-[#E3E9EF] text-[11px] text-[#667482]">
           <span>
-            Use <kbd className="px-1 py-0.5 bg-slate-100 rounded text-slate-600 font-mono">↑</kbd> <kbd className="px-1 py-0.5 bg-slate-100 rounded text-slate-600 font-mono">↓</kbd> to navigate
+            Use <kbd className="px-1.5 py-0.5 bg-[#F0F4F8] rounded text-[#17212B] font-mono border border-[#E3E9EF]">↑</kbd> <kbd className="px-1.5 py-0.5 bg-[#F0F4F8] rounded text-[#17212B] font-mono border border-[#E3E9EF]">↓</kbd> to navigate
           </span>
           <span>
-            Press <kbd className="px-1 py-0.5 bg-slate-100 rounded text-slate-600 font-mono">ESC</kbd> to exit
+            Press <kbd className="px-1.5 py-0.5 bg-[#F0F4F8] rounded text-[#17212B] font-mono border border-[#E3E9EF]">ESC</kbd> to exit
           </span>
         </div>
       </div>

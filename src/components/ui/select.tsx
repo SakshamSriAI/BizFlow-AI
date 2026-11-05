@@ -28,7 +28,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         {label && (
           <label
             htmlFor={selectId}
-            className="block text-xs font-medium text-slate-700"
+            className="block text-xs font-semibold text-[#17212B]"
           >
             {label}
           </label>
@@ -38,9 +38,9 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             id={selectId}
             ref={ref}
             className={cn(
-              "w-full appearance-none rounded-lg border border-slate-200 bg-white px-3 py-2 pr-9 text-sm text-slate-900 shadow-2xs transition-colors cursor-pointer",
-              "focus-visible:outline-none focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/10",
-              "disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400",
+              "w-full appearance-none rounded-lg border border-[#E3E9EF] bg-white px-3 py-2 pr-9 text-sm text-[#17212B] shadow-2xs transition-colors cursor-pointer",
+              "focus-visible:outline-none focus-visible:border-[#2F80ED] focus-visible:ring-2 focus-visible:ring-[#2F80ED]/15",
+              "disabled:cursor-not-allowed disabled:bg-[#F7F9FB] disabled:text-[#667482]",
               error && "border-rose-400 focus-visible:border-rose-500 focus-visible:ring-rose-100",
               className
             )}
@@ -52,12 +52,12 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
               </option>
             ))}
           </select>
-          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#667482] pointer-events-none" />
         </div>
         {error ? (
           <p className="text-xs text-rose-500 font-medium">{error}</p>
         ) : hint ? (
-          <p className="text-xs text-slate-400">{hint}</p>
+          <p className="text-xs text-[#667482]">{hint}</p>
         ) : null}
       </div>
     );

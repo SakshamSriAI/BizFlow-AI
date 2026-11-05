@@ -97,36 +97,36 @@ export function AIChatSimulation() {
     setActiveScenarioId(id);
     setTimeout(() => {
       setIsTyping(false);
-    }, 350);
+    }, 300);
   };
 
   return (
-    <div className="rounded-2xl border border-slate-200/90 bg-white p-5 sm:p-7 shadow-lg shadow-slate-200/50">
+    <div className="rounded-2xl border border-[#E3E9EF] bg-white p-5 sm:p-7 shadow-card">
       {/* Simulation Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[#E3E9EF] gap-3">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-xs">
+          <div className="w-8 h-8 rounded-lg bg-[#101820] flex items-center justify-center text-[#20B8A5] shadow-xs">
             <Sparkles className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-[#17212B] flex items-center gap-2">
               Nexora Business Copilot
-              <Badge variant="indigo" size="sm">Interactive Simulation</Badge>
+              <Badge variant="accent" size="sm">Interactive Simulation</Badge>
             </h3>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-[#667482]">
               Select any sample prompt below to preview simulated AI responses
             </p>
           </div>
         </div>
-        <div className="text-[11px] text-slate-400 flex items-center gap-1.5 self-start sm:self-auto bg-slate-50 px-2.5 py-1 rounded-full border border-slate-200/60 font-mono">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+        <div className="text-[11px] text-[#667482] flex items-center gap-1.5 self-start sm:self-auto bg-[#F7F9FB] px-2.5 py-1 rounded-full border border-[#E3E9EF] font-mono">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#20B8A5]" />
           Model: Nexora-Biz-Engine
         </div>
       </div>
 
       {/* Suggested Prompt Chips */}
       <div className="py-3 flex items-center gap-2 overflow-x-auto no-scrollbar">
-        <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider shrink-0">
+        <span className="text-[11px] font-medium text-[#667482] uppercase tracking-wider shrink-0">
           Try Prompt:
         </span>
         {scenarios.map((s) => (
@@ -136,8 +136,8 @@ export function AIChatSimulation() {
             className={cn(
               "px-3 py-1.5 rounded-full text-xs font-medium transition-all shrink-0 border",
               activeScenarioId === s.id
-                ? "bg-indigo-600 text-white border-indigo-600 shadow-xs"
-                : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100"
+                ? "bg-[#101820] text-[#F7F9FB] border-[#101820] shadow-xs"
+                : "bg-[#F7F9FB] text-[#17212B] border-[#E3E9EF] hover:bg-[#F0F4F8]"
             )}
           >
             {s.label}
@@ -146,30 +146,30 @@ export function AIChatSimulation() {
       </div>
 
       {/* Chat Thread */}
-      <div className="space-y-4 py-4 min-h-[280px]">
+      <div className="space-y-4 py-4 min-h-[260px]">
         {/* User Query Bubble */}
         <div className="flex items-start gap-3 max-w-xl ml-auto justify-end">
-          <div className="rounded-2xl rounded-tr-none bg-slate-900 px-4 py-2.5 text-xs text-white shadow-xs">
+          <div className="rounded-2xl rounded-tr-none bg-[#101820] px-4 py-2.5 text-xs text-[#F7F9FB] shadow-xs">
             {activeScenario.query}
           </div>
-          <div className="w-7 h-7 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center shrink-0 text-xs font-semibold">
+          <div className="w-7 h-7 rounded-full bg-[#E3E9EF] text-[#17212B] flex items-center justify-center shrink-0 text-xs font-semibold">
             You
           </div>
         </div>
 
         {/* AI Assistant Bubble */}
         <div className="flex items-start gap-3 max-w-2xl mr-auto">
-          <div className="w-7 h-7 rounded-full bg-indigo-600 text-white flex items-center justify-center shrink-0">
+          <div className="w-7 h-7 rounded-full bg-[#101820] text-[#20B8A5] flex items-center justify-center shrink-0">
             <Bot className="w-4 h-4" />
           </div>
 
           <div className="space-y-3 flex-1">
-            <div className="rounded-2xl rounded-tl-none bg-indigo-50/70 border border-indigo-100/80 px-4 py-3 text-xs text-slate-800 leading-relaxed shadow-2xs">
+            <div className="rounded-2xl rounded-tl-none bg-[#F7F9FB] border border-[#E3E9EF] px-4 py-3 text-xs text-[#17212B] leading-relaxed shadow-2xs">
               {isTyping ? (
-                <div className="flex items-center gap-1.5 py-1 text-slate-400">
-                  <span className="w-2 h-2 rounded-full bg-indigo-400 animate-bounce" />
-                  <span className="w-2 h-2 rounded-full bg-indigo-400 animate-bounce [animation-delay:0.2s]" />
-                  <span className="w-2 h-2 rounded-full bg-indigo-400 animate-bounce [animation-delay:0.4s]" />
+                <div className="flex items-center gap-1.5 py-1 text-[#667482]">
+                  <span className="w-2 h-2 rounded-full bg-[#2F80ED] animate-bounce" />
+                  <span className="w-2 h-2 rounded-full bg-[#2F80ED] animate-bounce [animation-delay:0.2s]" />
+                  <span className="w-2 h-2 rounded-full bg-[#2F80ED] animate-bounce [animation-delay:0.4s]" />
                 </div>
               ) : (
                 activeScenario.answer
@@ -182,15 +182,15 @@ export function AIChatSimulation() {
                 {activeScenario.stats.map((st, i) => (
                   <div
                     key={i}
-                    className="p-3 rounded-xl bg-white border border-slate-200/80 shadow-2xs"
+                    className="p-3 rounded-xl bg-white border border-[#E3E9EF] shadow-2xs"
                   >
-                    <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
+                    <div className="text-[10px] text-[#667482] uppercase tracking-wider font-semibold">
                       {st.label}
                     </div>
-                    <div className="text-sm font-bold text-slate-900 mt-0.5">
+                    <div className="text-sm font-bold text-[#17212B] mt-0.5">
                       {st.value}
                     </div>
-                    <div className="text-[10px] text-indigo-600 font-medium mt-0.5">
+                    <div className="text-[10px] text-[#20B8A5] font-semibold mt-0.5">
                       {st.subtext}
                     </div>
                   </div>
@@ -200,12 +200,12 @@ export function AIChatSimulation() {
 
             {/* Action Item Ready for Execution */}
             {!isTyping && activeScenario.actionItem && (
-              <div className="rounded-xl border border-emerald-200/80 bg-emerald-50/40 p-3 text-xs space-y-2">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-950">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+              <div className="rounded-xl border border-[#BCEEE7] bg-[#E8F8F6] p-3 text-xs space-y-2">
+                <div className="flex items-center gap-1.5 font-semibold text-[#137A6D]">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#20B8A5] shrink-0" />
                   <span>{activeScenario.actionItem.title}</span>
                 </div>
-                <p className="text-[11px] text-slate-600">
+                <p className="text-[11px] text-[#17212B]">
                   {activeScenario.actionItem.details}
                 </p>
                 <div className="pt-1">
@@ -213,10 +213,10 @@ export function AIChatSimulation() {
                     onClick={() =>
                       alert("Simulated AI workflow: In Phase 7 & 8, this autonomous action is approved with 1 click!")
                     }
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-600 text-white text-[11px] font-medium hover:bg-emerald-700 transition-colors shadow-2xs"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#101820] text-[#F7F9FB] text-[11px] font-medium hover:bg-[#17232D] transition-colors shadow-2xs"
                   >
                     <span>{activeScenario.actionItem.actionLabel}</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <ArrowRight className="w-3 h-3 text-[#20B8A5]" />
                   </button>
                 </div>
               </div>
@@ -226,12 +226,12 @@ export function AIChatSimulation() {
       </div>
 
       {/* Illustrative Disclaimer Notice */}
-      <div className="mt-2 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+      <div className="mt-2 pt-3 border-t border-[#E3E9EF] flex items-center justify-between text-[11px] text-[#667482]">
         <span className="flex items-center gap-1">
-          <AlertCircle className="w-3.5 h-3.5 text-slate-400" />
+          <AlertCircle className="w-3.5 h-3.5 text-[#667482]" />
           Illustrative mock conversation. Nexora AI runs against your actual workspace data once connected.
         </span>
-        <span className="font-mono text-indigo-600">Phase 1 Preview</span>
+        <span className="font-mono text-[#2F80ED]">Interactive Mode</span>
       </div>
     </div>
   );

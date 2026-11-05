@@ -20,6 +20,8 @@ import {
   BarChart3,
   TrendingUp,
   Settings,
+  ShieldCheck,
+  Puzzle,
   PlusCircle,
   X,
 } from "lucide-react";
@@ -136,25 +138,46 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       href: "/analytics/financial",
     },
     {
+      id: "nav-profile",
+      title: "Business Profile Settings",
+      category: "Navigation",
+      icon: Settings,
+      href: "/settings/profile",
+    },
+    {
+      id: "nav-team",
+      title: "Team & Permissions",
+      category: "Navigation",
+      icon: ShieldCheck,
+      href: "/settings/team",
+    },
+    {
+      id: "nav-integrations",
+      title: "Integrations & API Services",
+      category: "Navigation",
+      icon: Puzzle,
+      href: "/settings/integrations",
+    },
+    {
       id: "act-lead",
       title: "Add New Lead",
       category: "Quick Actions",
       icon: PlusCircle,
-      action: () => alert("Lead creation dialog will open in Phase 3."),
+      action: () => router.push("/sales/leads"),
     },
     {
       id: "act-invoice",
       title: "Create New Invoice",
       category: "Quick Actions",
       icon: PlusCircle,
-      action: () => alert("Invoice creator will open in Phase 5."),
+      action: () => router.push("/finance/invoices"),
     },
     {
       id: "act-expense",
       title: "Record New Expense",
       category: "Quick Actions",
       icon: PlusCircle,
-      action: () => alert("Expense recorder will open in Phase 4."),
+      action: () => router.push("/finance/expenses"),
     },
   ];
 

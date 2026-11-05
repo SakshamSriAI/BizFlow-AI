@@ -118,6 +118,7 @@ const navSections: NavSectionDef[] = [
       { title: "Business Profile", href: "/settings/profile", icon: Building2 },
       { title: "Team & Permissions", href: "/settings/team", icon: ShieldCheck },
       { title: "Integrations", href: "/settings/integrations", icon: Puzzle },
+      { title: "Preferences", href: "/settings/preferences", icon: Bell },
     ],
   },
 ];

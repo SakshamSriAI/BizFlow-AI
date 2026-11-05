@@ -40,7 +40,7 @@ export function IntegrationCard({
       case "MessageCircle":
         return <MessageCircle className="w-5 h-5 text-emerald-600" />;
       case "CreditCard":
-        return <CreditCard className="w-5 h-5 text-violet-600" />;
+        return <CreditCard className="w-5 h-5 text-[#20B8A5]" />;
       case "Calendar":
         return <Calendar className="w-5 h-5 text-amber-600" />;
       case "BookOpen":

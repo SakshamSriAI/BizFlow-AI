@@ -230,10 +230,10 @@ export default function PreferencesPage() {
               </label>
               <div className="flex items-center gap-3">
                 {[
-                  { id: "blue", color: "#2563eb", name: "Nexora Blue" },
-                  { id: "indigo", color: "#4f46e5", name: "Indigo Tech" },
+                  { id: "blue", color: "#2F80ED", name: "Nexora Blue" },
+                  { id: "teal", color: "#20B8A5", name: "Nexora Teal" },
                   { id: "emerald", color: "#059669", name: "Emerald Growth" },
-                  { id: "violet", color: "#7c3aed", name: "Royal Violet" },
+                  { id: "dark", color: "#101820", name: "Obsidian" },
                 ].map((c) => (
                   <button
                     key={c.id}

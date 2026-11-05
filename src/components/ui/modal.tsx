@@ -55,7 +55,7 @@ export function Modal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity animate-fade-in"
+        className="fixed inset-0 bg-[#101820]/60 backdrop-blur-xs transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -65,34 +65,34 @@ export function Modal({
         role="dialog"
         aria-modal="true"
         className={cn(
-          "relative w-full rounded-2xl bg-white p-6 text-left shadow-2xl transition-all border border-slate-100 z-10",
+          "relative w-full rounded-2xl bg-white p-6 text-left shadow-2xl transition-all border border-[#E3E9EF] z-10",
           widthClasses[maxWidth]
         )}
       >
         <div className="flex items-start justify-between pb-3">
           <div>
             {title && (
-              <h3 className="text-lg font-semibold text-slate-900 tracking-tight">
+              <h3 className="text-lg font-bold text-[#17212B] tracking-tight">
                 {title}
               </h3>
             )}
             {description && (
-              <p className="text-xs text-slate-500 mt-1">{description}</p>
+              <p className="text-xs text-[#667482] mt-1">{description}</p>
             )}
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-1 text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors -mr-1 -mt-1"
+            className="rounded-lg p-1 text-[#667482] hover:text-[#17212B] hover:bg-[#F0F4F8] transition-colors -mr-1 -mt-1"
             aria-label="Close dialog"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="py-2 text-sm text-slate-600">{children}</div>
+        <div className="py-2 text-sm text-[#17212B]">{children}</div>
 
         {footer && (
-          <div className="mt-5 flex items-center justify-end gap-2.5 pt-4 border-t border-slate-100">
+          <div className="mt-5 flex items-center justify-end gap-2.5 pt-4 border-t border-[#E3E9EF]">
             {footer}
           </div>
         )}

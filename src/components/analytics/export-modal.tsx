@@ -201,7 +201,7 @@ export function ExportModal({
                   : "border-slate-200 hover:border-slate-300 bg-white"
               }`}
             >
-              <FileCode className="w-6 h-6 text-violet-600 mx-auto" />
+              <FileCode className="w-6 h-6 text-[#2F80ED] mx-auto" />
               <span className="text-xs font-bold text-slate-900 block">JSON Raw</span>
               <p className="text-[10px] text-slate-500">API telemetry</p>
             </div>

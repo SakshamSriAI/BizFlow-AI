@@ -221,7 +221,7 @@ export function RevenueReportView({ data }: RevenueReportViewProps) {
                       <span
                         className={`px-2 py-0.5 rounded text-[10px] font-semibold ${
                           c.status === "Expanding"
-                            ? "bg-violet-50 text-violet-700 border border-violet-200"
+                            ? "bg-[#EBF3FC] text-[#2F80ED] border border-[#C4DEFA]"
                             : c.status === "Active"
                             ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
                             : "bg-rose-50 text-rose-700 border border-rose-200"

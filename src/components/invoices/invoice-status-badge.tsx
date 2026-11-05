@@ -95,9 +95,9 @@ export function QuotationStatusBadge({ status, className = "" }: QuotationStatus
     case "converted":
       return (
         <span
-          className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-violet-50 text-violet-700 border border-violet-200 ${className}`}
+          className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#E8F8F6] text-[#137A6D] border border-[#BCEEE7] ${className}`}
         >
-          <CheckCheck className="w-3.5 h-3.5 text-violet-600" />
+          <CheckCheck className="w-3.5 h-3.5 text-[#20B8A5]" />
           Converted to Invoice
         </span>
       );

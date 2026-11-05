@@ -37,7 +37,7 @@ export function AgentCard({
   const getIcon = (name: string) => {
     switch (name) {
       case "UserPlus":
-        return <UserPlus className="w-5 h-5 text-violet-600" />;
+        return <UserPlus className="w-5 h-5 text-[#2F80ED]" />;
       case "CreditCard":
         return <CreditCard className="w-5 h-5 text-emerald-600" />;
       case "FileText":

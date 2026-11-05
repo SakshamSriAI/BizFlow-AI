@@ -25,9 +25,9 @@ export function SuggestedPromptsBar({
       case "AlertCircle":
         return <AlertCircle className="w-3.5 h-3.5 text-rose-600" />;
       case "UserCheck":
-        return <UserCheck className="w-3.5 h-3.5 text-violet-600" />;
+        return <UserCheck className="w-3.5 h-3.5 text-[#20B8A5]" />;
       case "Users":
-        return <Users className="w-3.5 h-3.5 text-indigo-600" />;
+        return <Users className="w-3.5 h-3.5 text-[#2F80ED]" />;
       case "TrendingUp":
         return <TrendingUp className="w-3.5 h-3.5 text-emerald-600" />;
       case "Sparkles":

@@ -249,7 +249,7 @@ export default function BusinessProfilePage() {
         {/* Section 3: Operational Localization */}
         <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-2xs space-y-4">
           <div className="flex items-center gap-2 pb-3 border-b border-slate-100">
-            <Sliders className="w-4 h-4 text-violet-600" />
+            <Sliders className="w-4 h-4 text-[#2F80ED]" />
             <h3 className="text-sm font-bold text-slate-900">
               Operational Defaults & Formatting
             </h3>

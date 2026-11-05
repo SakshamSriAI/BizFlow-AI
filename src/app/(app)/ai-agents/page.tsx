@@ -123,7 +123,7 @@ export default function AIAgentsPage() {
         <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:border-slate-300 transition-all">
           <div className="flex items-center justify-between text-xs text-slate-500 mb-2 font-medium">
             <span>Average Accuracy</span>
-            <TrendingUp className="w-4 h-4 text-violet-500" />
+            <TrendingUp className="w-4 h-4 text-[#20B8A5]" />
           </div>
           <div className="text-2xl font-bold text-slate-900">99.4%</div>
           <p className="text-xs text-slate-500 mt-1">High-confidence decision adherence</p>

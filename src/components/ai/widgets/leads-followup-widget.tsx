@@ -34,10 +34,10 @@ export function LeadsFollowupWidget({
     <div className="my-3 bg-white border border-slate-200 rounded-xl p-4 shadow-sm space-y-3.5 max-w-xl">
       <div className="flex items-center justify-between pb-2 border-b border-slate-100">
         <div className="flex items-center gap-2 text-slate-800 font-semibold text-xs">
-          <UserCheck className="w-4 h-4 text-violet-600" />
+          <UserCheck className="w-4 h-4 text-[#2F80ED]" />
           <span>Active Leads Requiring Follow-Up</span>
         </div>
-        <span className="text-xs font-bold text-violet-700 bg-violet-50 px-2.5 py-0.5 rounded-full border border-violet-200">
+        <span className="text-xs font-bold text-[#2F80ED] bg-[#EBF3FC] px-2.5 py-0.5 rounded-full border border-[#C4DEFA]">
           Pipeline: {formatMoney(data.totalPipelineCents, "INR")}
         </span>
       </div>
@@ -82,9 +82,9 @@ export function LeadsFollowupWidget({
                 variant="outline"
                 size="sm"
                 onClick={() => onScheduleCall?.(lead)}
-                className="h-7 px-2.5 text-[11px] text-violet-700 hover:bg-violet-50 border-violet-200"
+                className="h-7 px-2.5 text-[11px] text-[#2F80ED] hover:bg-[#EBF3FC] border-[#C4DEFA]"
               >
-                <PhoneCall className="w-3 h-3 mr-1 text-violet-600" />
+                <PhoneCall className="w-3 h-3 mr-1 text-[#2F80ED]" />
                 Schedule Call
               </Button>
             </div>

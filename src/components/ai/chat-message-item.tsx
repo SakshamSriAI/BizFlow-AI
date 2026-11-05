@@ -69,8 +69,8 @@ export function ChatMessageItem({
 
   return (
     <div className="flex items-start gap-3 my-5 group">
-      <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shrink-0 shadow-sm border border-blue-400">
-        <Bot className="w-4 h-4 text-white" />
+      <div className="w-8 h-8 rounded-xl bg-[#101820] flex items-center justify-center text-[#20B8A5] shrink-0 shadow-xs border border-[#263746]">
+        <Bot className="w-4 h-4 text-[#20B8A5]" />
       </div>
 
       <div className="flex-1 max-w-2xl space-y-2">
@@ -80,7 +80,7 @@ export function ChatMessageItem({
             <span className="text-xs font-bold text-slate-900 tracking-tight">
               Nexora AI Assistant
             </span>
-            <span className="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+            <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-[#EBF3FC] text-[#2F80ED] border border-[#C4DEFA]">
               Copilot v2.4
             </span>
             <span className="text-[11px] text-slate-400">• {message.timestamp}</span>

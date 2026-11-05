@@ -44,19 +44,26 @@ export function Topbar({
   const notifRef = React.useRef<HTMLDivElement>(null);
   const userMenuRef = React.useRef<HTMLDivElement>(null);
 
-  // Close dropdowns when clicking outside
+  // Close dropdowns on outside click
   React.useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (workspaceRef.current && !workspaceRef.current.contains(event.target as Node)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        workspaceRef.current &&
+        !workspaceRef.current.contains(event.target as Node)
+      ) {
         setWorkspaceOpen(false);
       }
       if (notifRef.current && !notifRef.current.contains(event.target as Node)) {
         setNotificationsOpen(false);
       }
-      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+      if (
+        userMenuRef.current &&
+        !userMenuRef.current.contains(event.target as Node)
+      ) {
         setUserMenuOpen(false);
       }
-    }
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -68,14 +75,14 @@ export function Topbar({
   };
 
   return (
-    <header className="sticky top-0 z-20 flex h-14 w-full items-center justify-between border-b border-slate-200/80 bg-white/95 px-4 backdrop-blur-md">
-      {/* Left: Mobile Toggle & Workspace Selector */}
+    <header className="h-14 border-b border-[#E3E9EF] bg-white/95 backdrop-blur-md px-4 flex items-center justify-between shrink-0 sticky top-0 z-20">
+      {/* Left: Mobile hamburger & Workspace Switcher */}
       <div className="flex items-center gap-3">
-        {/* Mobile menu button */}
+        {/* Mobile menu trigger */}
         <button
           onClick={onMobileToggle}
-          className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 hover:text-slate-800 md:hidden"
-          aria-label="Toggle navigation menu"
+          className="md:hidden rounded-lg p-1.5 text-[#667482] hover:bg-[#F0F4F8] hover:text-[#17212B] transition-colors"
+          aria-label="Open mobile menu"
         >
           <Menu className="w-5 h-5" />
         </button>
@@ -84,25 +91,25 @@ export function Topbar({
         <div className="relative" ref={workspaceRef}>
           <button
             onClick={() => setWorkspaceOpen(!workspaceOpen)}
-            className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50/70 hover:bg-slate-100/80 px-2.5 py-1.5 text-left transition-colors"
+            className="flex items-center gap-2 rounded-lg border border-[#E3E9EF] bg-[#F7F9FB] hover:bg-[#F0F4F8] px-2.5 py-1.5 text-left transition-colors"
           >
-            <div className="w-5 h-5 rounded bg-indigo-600 text-white flex items-center justify-center text-[10px] font-bold">
+            <div className="w-5 h-5 rounded bg-[#101820] text-[#F7F9FB] flex items-center justify-center text-[10px] font-bold">
               {activeWorkspace.name.charAt(0)}
             </div>
             <div className="flex flex-col text-left">
-              <span className="text-xs font-semibold text-slate-900 leading-none max-w-[120px] sm:max-w-[160px] truncate">
+              <span className="text-xs font-semibold text-[#17212B] leading-none max-w-[120px] sm:max-w-[160px] truncate">
                 {activeWorkspace.name}
               </span>
-              <span className="text-[10px] text-slate-400 font-medium leading-none mt-0.5">
+              <span className="text-[10px] text-[#667482] font-medium leading-none mt-0.5">
                 {activeWorkspace.plan} Plan
               </span>
             </div>
-            <ChevronDown className="w-3.5 h-3.5 text-slate-400 ml-1" />
+            <ChevronDown className="w-3.5 h-3.5 text-[#667482] ml-1" />
           </button>
 
           {workspaceOpen && (
-            <div className="absolute left-0 mt-2 w-64 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xl z-50">
-              <div className="px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+            <div className="absolute left-0 mt-2 w-64 rounded-xl border border-[#E3E9EF] bg-white p-1.5 shadow-xl z-50">
+              <div className="px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#667482]">
                 Workspaces ({mockWorkspaces.length})
               </div>
               <div className="space-y-0.5">
@@ -116,32 +123,32 @@ export function Topbar({
                     className={cn(
                       "w-full flex items-center justify-between rounded-lg px-2.5 py-2 text-xs transition-colors",
                       activeWorkspace.id === ws.id
-                        ? "bg-indigo-50 text-indigo-700 font-semibold"
-                        : "text-slate-700 hover:bg-slate-100"
+                        ? "bg-[#EBF3FC] text-[#2F80ED] font-semibold"
+                        : "text-[#17212B] hover:bg-[#F7F9FB]"
                     )}
                   >
                     <div className="flex items-center gap-2 truncate">
-                      <div className="w-6 h-6 rounded bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center text-xs font-semibold">
+                      <div className="w-6 h-6 rounded bg-[#F0F4F8] border border-[#E3E9EF] text-[#17212B] flex items-center justify-center text-xs font-semibold">
                         {ws.name.charAt(0)}
                       </div>
                       <div className="truncate text-left">
-                        <div className="truncate">{ws.name}</div>
-                        <div className="text-[10px] text-slate-400 font-normal">
+                        <div className="truncate font-medium">{ws.name}</div>
+                        <div className="text-[10px] text-[#667482] font-normal">
                           {ws.industry}
                         </div>
                       </div>
                     </div>
                     {activeWorkspace.id === ws.id && (
-                      <Check className="w-4 h-4 text-indigo-600 shrink-0" />
+                      <Check className="w-4 h-4 text-[#2F80ED] shrink-0" />
                     )}
                   </button>
                 ))}
               </div>
-              <div className="mt-1.5 pt-1.5 border-t border-slate-100 space-y-0.5">
+              <div className="mt-1.5 pt-1.5 border-t border-[#E3E9EF] space-y-0.5">
                 <Link
                   href="/onboarding"
                   onClick={() => setWorkspaceOpen(false)}
-                  className="w-full flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-indigo-600 hover:bg-indigo-50 font-medium transition-colors"
+                  className="w-full flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-[#2F80ED] hover:bg-[#EBF3FC] font-medium transition-colors"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   <span>Create new workspace</span>
@@ -149,9 +156,9 @@ export function Topbar({
                 <Link
                   href="/workspaces"
                   onClick={() => setWorkspaceOpen(false)}
-                  className="w-full flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-slate-600 hover:bg-slate-100 font-medium transition-colors"
+                  className="w-full flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-[#667482] hover:bg-[#F7F9FB] font-medium transition-colors"
                 >
-                  <Command className="w-3.5 h-3.5 text-slate-400" />
+                  <Command className="w-3.5 h-3.5 text-[#667482]" />
                   <span>Manage all workspaces</span>
                 </Link>
               </div>
@@ -164,13 +171,13 @@ export function Topbar({
       <div className="hidden sm:flex items-center flex-1 max-w-md mx-4">
         <div
           onClick={onOpenSearch}
-          className="w-full flex items-center justify-between rounded-lg border border-slate-200 bg-slate-50/70 px-3 py-1.5 text-xs text-slate-400 hover:border-slate-300 hover:bg-white transition-all cursor-pointer shadow-2xs"
+          className="w-full flex items-center justify-between rounded-lg border border-[#E3E9EF] bg-[#F7F9FB] px-3 py-1.5 text-xs text-[#667482] hover:border-[#CBD5E1] hover:bg-white transition-all cursor-pointer shadow-2xs"
         >
           <div className="flex items-center gap-2">
-            <Search className="w-4 h-4 text-slate-400 shrink-0" />
+            <Search className="w-4 h-4 text-[#667482] shrink-0" />
             <span>Search leads, customers, invoices, tools...</span>
           </div>
-          <div className="flex items-center gap-0.5 text-[10px] bg-white border border-slate-200 rounded px-1.5 py-0.5 text-slate-500 font-mono">
+          <div className="flex items-center gap-0.5 text-[10px] bg-white border border-[#E3E9EF] rounded px-1.5 py-0.5 text-[#17212B] font-mono">
             <span>⌘</span>
             <span>K</span>
           </div>
@@ -182,15 +189,15 @@ export function Topbar({
         {/* Mobile Search Icon */}
         <button
           onClick={onOpenSearch}
-          className="sm:hidden rounded-lg p-2 text-slate-500 hover:bg-slate-100"
+          className="sm:hidden rounded-lg p-2 text-[#667482] hover:bg-[#F0F4F8]"
           aria-label="Search"
         >
           <Search className="w-4 h-4" />
         </button>
 
         {/* AI Quick Sparkle indicator */}
-        <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-medium">
-          <Sparkles className="w-3.5 h-3.5 text-indigo-600 animate-pulse" />
+        <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EBF3FC] border border-[#C4DEFA] text-[#2F80ED] text-xs font-semibold">
+          <Sparkles className="w-3.5 h-3.5 text-[#20B8A5] animate-pulse" />
           <span>AI Active</span>
         </div>
 
@@ -198,7 +205,7 @@ export function Topbar({
         <div className="relative" ref={notifRef}>
           <button
             onClick={() => setNotificationsOpen(!notificationsOpen)}
-            className="relative rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-colors"
+            className="relative rounded-lg p-2 text-[#667482] hover:bg-[#F0F4F8] hover:text-[#17212B] transition-colors"
             aria-label="View notifications"
           >
             <Bell className="w-4 h-4" />
@@ -211,14 +218,14 @@ export function Topbar({
           </button>
 
           {notificationsOpen && (
-            <div className="absolute right-0 mt-2 w-80 rounded-xl border border-slate-200 bg-white shadow-xl z-50 overflow-hidden">
-              <div className="flex items-center justify-between p-3 border-b border-slate-100 bg-slate-50/50">
+            <div className="absolute right-0 mt-2 w-80 rounded-xl border border-[#E3E9EF] bg-white shadow-xl z-50 overflow-hidden">
+              <div className="flex items-center justify-between p-3 border-b border-[#E3E9EF] bg-[#F7F9FB]">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-semibold text-slate-900">
+                  <span className="text-xs font-bold text-[#17212B]">
                     Notifications
                   </span>
                   {unreadCount > 0 && (
-                    <Badge variant="indigo" size="sm">
+                    <Badge variant="accent" size="sm">
                       {unreadCount} new
                     </Badge>
                   )}
@@ -226,15 +233,15 @@ export function Topbar({
                 {unreadCount > 0 && (
                   <button
                     onClick={markAllRead}
-                    className="text-[11px] text-indigo-600 hover:underline font-medium"
+                    className="text-[11px] text-[#2F80ED] hover:underline font-medium"
                   >
                     Mark all as read
                   </button>
                 )}
               </div>
-              <div className="max-h-72 overflow-y-auto divide-y divide-slate-100">
+              <div className="max-h-72 overflow-y-auto divide-y divide-[#E3E9EF]">
                 {notifications.length === 0 ? (
-                  <div className="p-4 text-center text-xs text-slate-400">
+                  <div className="p-4 text-center text-xs text-[#667482]">
                     No notifications
                   </div>
                 ) : (
@@ -242,27 +249,27 @@ export function Topbar({
                     <div
                       key={notif.id}
                       className={cn(
-                        "p-3 text-left transition-colors hover:bg-slate-50 cursor-pointer",
-                        !notif.read && "bg-indigo-50/30"
+                        "p-3 text-left transition-colors hover:bg-[#F7F9FB] cursor-pointer",
+                        !notif.read && "bg-[#EBF3FC]/40"
                       )}
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <span className="text-xs font-medium text-slate-800">
+                        <span className="text-xs font-semibold text-[#17212B]">
                           {notif.title}
                         </span>
-                        <span className="text-[10px] text-slate-400 shrink-0">
+                        <span className="text-[10px] text-[#667482] shrink-0">
                           {notif.timestamp}
                         </span>
                       </div>
-                      <p className="text-[11px] text-slate-500 mt-1 leading-normal">
+                      <p className="text-[11px] text-[#667482] mt-1 leading-normal">
                         {notif.description}
                       </p>
                     </div>
                   ))
                 )}
               </div>
-              <div className="p-2 border-t border-slate-100 text-center bg-slate-50/30">
-                <span className="text-[11px] text-slate-400">
+              <div className="p-2 border-t border-[#E3E9EF] text-center bg-[#F7F9FB]">
+                <span className="text-[11px] text-[#667482]">
                   Real-time business notifications
                 </span>
               </div>
@@ -273,22 +280,22 @@ export function Topbar({
         {/* Help button */}
         <button
           onClick={() => {
-            alert("BusinessOS Documentation & Help Center is ready for deployment.");
+            alert("Nexora Knowledge Base & Support Center is active.");
           }}
-          className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-colors"
+          className="rounded-lg p-2 text-[#667482] hover:bg-[#F0F4F8] hover:text-[#17212B] transition-colors"
           aria-label="Help and resources"
           title="Help & documentation"
         >
           <HelpCircle className="w-4 h-4" />
         </button>
 
-        <div className="h-4 w-px bg-slate-200 mx-1" />
+        <div className="h-4 w-px bg-[#E3E9EF] mx-1" />
 
         {/* User Profile Menu Dropdown */}
         <div className="relative" ref={userMenuRef}>
           <button
             onClick={() => setUserMenuOpen(!userMenuOpen)}
-            className="flex items-center gap-2 rounded-lg p-1 hover:bg-slate-100 transition-colors"
+            className="flex items-center gap-2 rounded-lg p-1 hover:bg-[#F0F4F8] transition-colors"
             aria-label="User profile options"
           >
             <Avatar
@@ -296,54 +303,50 @@ export function Topbar({
               size="sm"
               status={mockCurrentUser.status}
             />
-            <ChevronDown className="w-3.5 h-3.5 text-slate-400 hidden sm:block" />
+            <ChevronDown className="w-3.5 h-3.5 text-[#667482] hidden sm:block" />
           </button>
 
           {userMenuOpen && (
-            <div className="absolute right-0 mt-2 w-56 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xl z-50">
-              <div className="px-3 py-2 border-b border-slate-100">
-                <div className="font-semibold text-xs text-slate-900 truncate">
+            <div className="absolute right-0 mt-2 w-56 rounded-xl border border-[#E3E9EF] bg-white p-1.5 shadow-xl z-50">
+              <div className="px-3 py-2 border-b border-[#E3E9EF]">
+                <div className="font-bold text-xs text-[#17212B] truncate">
                   {mockCurrentUser.name}
                 </div>
-                <div className="text-[11px] text-slate-400 truncate">
+                <div className="text-[11px] text-[#667482] truncate">
                   {mockCurrentUser.email}
                 </div>
-                <Badge variant="indigo" size="sm" className="mt-1.5 text-[10px]">
+                <Badge variant="accent" size="sm" className="mt-1.5 text-[10px]">
                   {mockCurrentUser.role}
                 </Badge>
               </div>
 
               <div className="py-1 space-y-0.5">
-                <button
-                  onClick={() => {
-                    setUserMenuOpen(false);
-                    alert("Profile settings will be configured in Phase 9.");
-                  }}
-                  className="w-full flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 hover:bg-slate-100 transition-colors"
+                <Link
+                  href="/settings/profile"
+                  onClick={() => setUserMenuOpen(false)}
+                  className="w-full flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-[#17212B] hover:bg-[#F7F9FB] transition-colors"
                 >
-                  <User className="w-3.5 h-3.5 text-slate-400" />
+                  <User className="w-3.5 h-3.5 text-[#667482]" />
                   <span>My Profile</span>
-                </button>
-                <button
-                  onClick={() => {
-                    setUserMenuOpen(false);
-                    alert("Workspace settings will be configured in Phase 9.");
-                  }}
-                  className="w-full flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 hover:bg-slate-100 transition-colors"
+                </Link>
+                <Link
+                  href="/settings/team"
+                  onClick={() => setUserMenuOpen(false)}
+                  className="w-full flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-[#17212B] hover:bg-[#F7F9FB] transition-colors"
                 >
-                  <Settings className="w-3.5 h-3.5 text-slate-400" />
+                  <Settings className="w-3.5 h-3.5 text-[#667482]" />
                   <span>Workspace Settings</span>
-                </button>
+                </Link>
               </div>
 
-              <div className="pt-1 border-t border-slate-100">
+              <div className="pt-1 border-t border-[#E3E9EF]">
                 <Link
                   href="/login"
                   onClick={() => setUserMenuOpen(false)}
                   className="w-full flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-rose-600 hover:bg-rose-50 transition-colors"
                 >
                   <LogOut className="w-3.5 h-3.5 text-rose-500" />
-                  <span>Log out</span>
+                  <span>Sign out</span>
                 </Link>
               </div>
             </div>

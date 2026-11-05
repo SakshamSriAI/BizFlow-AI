@@ -80,6 +80,6 @@ export interface NotificationSettings {
 
 export interface AppearanceSettings {
   theme: "light" | "dark" | "system";
-  accentColor: "blue" | "indigo" | "emerald" | "violet";
+  accentColor: "blue" | "teal" | "dark" | "emerald" | "indigo" | "violet";
   compactSidebar: boolean;
 }

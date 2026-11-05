@@ -41,7 +41,7 @@ export function ChatSidebar({
       case "finance":
         return <CreditCard className="w-3.5 h-3.5 text-blue-500" />;
       case "sales":
-        return <Users className="w-3.5 h-3.5 text-violet-500" />;
+        return <Users className="w-3.5 h-3.5 text-[#20B8A5]" />;
       case "operations":
         return <TrendingUp className="w-3.5 h-3.5 text-emerald-500" />;
       default:

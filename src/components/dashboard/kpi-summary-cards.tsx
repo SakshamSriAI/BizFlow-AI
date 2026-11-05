@@ -55,9 +55,9 @@ export function KPISummaryCards({
     {
       data: leads,
       icon: Target,
-      iconBg: "bg-indigo-50 text-indigo-600 border-indigo-100",
-      accentBorder: "hover:border-indigo-200",
-      pillVariant: "indigo" as const,
+      iconBg: "bg-[#EBF3FC] text-[#2F80ED] border-[#C4DEFA]",
+      accentBorder: "hover:border-[#C4DEFA]",
+      pillVariant: "accent" as const,
     },
   ];
 

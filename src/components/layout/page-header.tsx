@@ -30,7 +30,7 @@ export function PageHeader({
   return (
     <div
       className={cn(
-        "flex flex-col gap-4 pb-6 md:flex-row md:items-center md:justify-between",
+        "flex flex-col gap-4 pb-6 md:flex-row md:items-center md:justify-between border-b border-[#E3E9EF]/60 mb-6",
         className
       )}
     >
@@ -38,26 +38,26 @@ export function PageHeader({
         {breadcrumbs && breadcrumbs.length > 0 && (
           <nav
             aria-label="Breadcrumb"
-            className="flex items-center space-x-1.5 text-xs text-slate-500 mb-1"
+            className="flex items-center space-x-1.5 text-xs text-[#667482] mb-1"
           >
             {breadcrumbs.map((crumb, idx) => {
               const isLast = idx === breadcrumbs.length - 1;
               return (
                 <div key={idx} className="flex items-center space-x-1.5">
                   {idx > 0 && (
-                    <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#667482]/60 shrink-0" />
                   )}
                   {crumb.href && !isLast ? (
                     <Link
                       href={crumb.href}
-                      className="hover:text-slate-800 transition-colors"
+                      className="hover:text-[#17212B] transition-colors"
                     >
                       {crumb.label}
                     </Link>
                   ) : (
                     <span
                       className={cn(
-                        isLast ? "font-medium text-slate-800" : "text-slate-500"
+                        isLast ? "font-semibold text-[#17212B]" : "text-[#667482]"
                       )}
                     >
                       {crumb.label}
@@ -70,14 +70,14 @@ export function PageHeader({
         )}
 
         <div className="flex items-center gap-3">
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#17212B]">
             {title}
           </h1>
           {badge}
         </div>
 
         {description && (
-          <p className="text-xs sm:text-sm text-slate-500 max-w-2xl font-normal">
+          <p className="text-xs sm:text-sm text-[#667482] max-w-2xl font-normal">
             {description}
           </p>
         )}

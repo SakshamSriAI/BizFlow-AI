@@ -8,7 +8,7 @@ export const initialAgents: AIAgent[] = [
     description:
       "Monitors inbound demo inquiries, enriches CRM records, evaluates deal size, and schedules timely sales representative touchpoints.",
     iconName: "UserPlus",
-    color: "violet",
+    color: "blue",
     status: "active",
     enabled: true,
     tasksCompletedCount: 142,

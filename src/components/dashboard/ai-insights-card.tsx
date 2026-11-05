@@ -48,19 +48,19 @@ export function AIInsightsCard({ onOpenCopilot }: AIInsightsCardProps) {
   };
 
   return (
-    <Card className="border-indigo-100 bg-linear-to-b from-indigo-50/40 via-white to-white p-5 shadow-xs">
+    <Card className="border-[#E3E9EF] bg-white p-5 shadow-2xs">
       {/* Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-indigo-100/60">
+      <div className="flex items-center justify-between pb-3 border-b border-[#E3E9EF]">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center shadow-2xs">
+          <div className="w-8 h-8 rounded-lg bg-[#101820] text-[#20B8A5] flex items-center justify-center shadow-2xs border border-[#263746]">
             <Sparkles className="w-4 h-4" />
           </div>
           <div>
             <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
               Nexora AI Business Insights
-              <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="flex h-2 w-2 rounded-full bg-[#20B8A5] animate-pulse" />
             </h3>
-            <p className="text-[11px] text-slate-500">
+            <p className="text-[11px] text-[#667482]">
               Autonomous pattern detection across pipeline and ledger.
             </p>
           </div>
@@ -69,13 +69,13 @@ export function AIInsightsCard({ onOpenCopilot }: AIInsightsCardProps) {
         {insights.length < mockAIInsights.length ? (
           <button
             onClick={resetInsights}
-            className="text-[11px] text-indigo-600 hover:underline flex items-center gap-1 font-medium"
+            className="text-[11px] text-[#2F80ED] hover:underline flex items-center gap-1 font-medium"
           >
             <RotateCcw className="w-3 h-3" />
             <span>Restore ({mockAIInsights.length - insights.length})</span>
           </button>
         ) : (
-          <Badge variant="indigo" size="sm">
+          <Badge variant="accent" size="sm">
             {insights.length} Actionable
           </Badge>
         )}

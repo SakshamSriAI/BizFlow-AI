@@ -3,6 +3,12 @@
 import * as React from "react";
 import Link from "next/link";
 import {
+  motion,
+  AnimatePresence,
+  useReducedMotion,
+  Variants,
+} from "framer-motion";
+import {
   ArrowRight,
   Sparkles,
   CheckCircle2,
@@ -43,9 +49,40 @@ export default function MarketingLandingPage() {
   const [billingCycle, setBillingCycle] = React.useState<"monthly" | "annual">("monthly");
   const [activeFaq, setActiveFaq] = React.useState<number | null>(null);
   const [selectedSolution, setSelectedSolution] = React.useState<string>("agencies");
+  const shouldReduceMotion = useReducedMotion();
 
   const toggleFaq = (idx: number) => {
     setActiveFaq(activeFaq === idx ? null : idx);
+  };
+
+  // Motion Variants
+  const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
+  const staggerContainer: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.08,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const cardItem: Variants = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+    },
   };
 
   const problems = [
@@ -252,7 +289,7 @@ export default function MarketingLandingPage() {
           SECTION 1: HERO SECTION
          ========================================================================= */}
       <section className="relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-        {/* Subtle Architectural Grid Pattern (No purple blur/glow) */}
+        {/* Subtle Architectural Grid Pattern */}
         <div
           className="absolute inset-0 -top-28 -z-10 opacity-30 pointer-events-none"
           style={{
@@ -262,52 +299,81 @@ export default function MarketingLandingPage() {
           aria-hidden="true"
         />
 
-        {/* Announcement Pill */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EBF3FC] border border-[#C4DEFA] text-[#2F80ED] text-xs font-semibold mb-8 shadow-2xs hover:bg-[#E1EEFC] transition-colors cursor-pointer">
+        {/* Announcement Pill with subtle hover motion */}
+        <motion.div
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EBF3FC] border border-[#C4DEFA] text-[#2F80ED] text-xs font-semibold mb-8 shadow-2xs hover:bg-[#E1EEFC] transition-colors cursor-pointer"
+        >
           <span className="flex h-2 w-2 rounded-full bg-[#20B8A5] animate-pulse" />
           <span>Nexora Platform 2.0</span>
           <span className="text-[#96C3F6]">•</span>
           <span className="flex items-center gap-1 font-semibold text-[#174FA7]">
             Intelligent Business Management <ArrowRight className="w-3 h-3" />
           </span>
-        </div>
+        </motion.div>
 
-        {/* Main Headline */}
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#17212B] max-w-4xl mx-auto leading-[1.08]">
+        {/* Main Headline with upward reveal */}
+        <motion.h1
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#17212B] max-w-4xl mx-auto leading-[1.08]"
+        >
           Your Business Runs Better <br className="hidden sm:inline" />
           <span className="text-[#2F80ED]">With Nexora.</span>
-        </h1>
+        </motion.h1>
 
         {/* Supporting Message */}
-        <p className="mt-6 text-base sm:text-xl text-[#667482] max-w-2xl mx-auto leading-relaxed font-normal">
+        <motion.p
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-6 text-base sm:text-xl text-[#667482] max-w-2xl mx-auto leading-relaxed font-normal"
+        >
           Manage customers, close deals, track finances and run daily operations from one intelligent workspace.
-        </p>
+        </motion.p>
 
-        {/* Primary & Secondary CTAs */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+        {/* Primary & Secondary CTAs with micro-interaction */}
+        <motion.div
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5"
+        >
           <Link href="/signup">
-            <Button
-              variant="dark"
-              size="lg"
-              className="w-full sm:w-auto px-8 text-sm font-semibold shadow-xs"
-              rightIcon={<ArrowRight className="w-4 h-4" />}
-            >
-              Get Started Free
-            </Button>
+            <motion.div whileHover={shouldReduceMotion ? {} : { scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Button
+                variant="dark"
+                size="lg"
+                className="w-full sm:w-auto px-8 text-sm font-semibold shadow-xs"
+                rightIcon={<ArrowRight className="w-4 h-4" />}
+              >
+                Get Started Free
+              </Button>
+            </motion.div>
           </Link>
           <Link href="/app">
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto px-8 text-sm font-medium border-[#E3E9EF] hover:bg-[#F7F9FB] text-[#17212B]"
-            >
-              Explore Nexora
-            </Button>
+            <motion.div whileHover={shouldReduceMotion ? {} : { scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto px-8 text-sm font-medium border-[#E3E9EF] hover:bg-[#F7F9FB] text-[#17212B]"
+              >
+                Explore Nexora
+              </Button>
+            </motion.div>
           </Link>
-        </div>
+        </motion.div>
 
         {/* Trust Indicators */}
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-6 text-xs text-[#667482]">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.32 }}
+          className="mt-7 flex flex-wrap items-center justify-center gap-6 text-xs text-[#667482]"
+        >
           <div className="flex items-center gap-1.5 font-medium">
             <CheckCircle2 className="w-4 h-4 text-[#20B8A5]" />
             <span>No credit card required</span>
@@ -320,18 +386,30 @@ export default function MarketingLandingPage() {
             <CheckCircle2 className="w-4 h-4 text-[#20B8A5]" />
             <span>Setup in under 60 seconds</span>
           </div>
-        </div>
+        </motion.div>
 
-        {/* High-Precision Dashboard Preview */}
-        <div className="mt-14 sm:mt-16">
+        {/* High-Precision Dashboard Preview with subtle entrance */}
+        <motion.div
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30, scale: shouldReduceMotion ? 1 : 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.65, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-14 sm:mt-16"
+        >
           <DashboardPreview />
-        </div>
+        </motion.div>
       </section>
 
       {/* =========================================================================
           SECTION 2: PROBLEM VS SOLUTION (ASYMMETRICAL COMPARISON)
          ========================================================================= */}
-      <section id="solution" className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28">
+      <motion.section
+        id="solution"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-70px" }}
+        variants={fadeInUp}
+        className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28"
+      >
         <div className="text-center max-w-3xl mx-auto mb-14">
           <Badge variant="accent" size="sm" className="mb-3">
             Why Nexora
@@ -356,11 +434,22 @@ export default function MarketingLandingPage() {
                 <span className="text-xs text-[#667482]">Legacy Chaos</span>
               </div>
 
-              <div className="space-y-4">
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="space-y-4"
+              >
                 {problems.map((p, idx) => {
                   const Icon = p.icon;
                   return (
-                    <div key={idx} className="flex items-start gap-3.5 p-3 rounded-xl bg-[#F7F9FB] border border-[#E3E9EF]">
+                    <motion.div
+                      key={idx}
+                      variants={cardItem}
+                      whileHover={shouldReduceMotion ? {} : { x: 3 }}
+                      className="flex items-start gap-3.5 p-3 rounded-xl bg-[#F7F9FB] border border-[#E3E9EF] transition-transform"
+                    >
                       <div className="w-8 h-8 rounded-lg bg-[#FEE2E2] text-[#DC2626] flex items-center justify-center shrink-0">
                         <Icon className="w-4 h-4" />
                       </div>
@@ -368,10 +457,10 @@ export default function MarketingLandingPage() {
                         <h4 className="text-xs font-bold text-[#17212B]">{p.title}</h4>
                         <p className="text-[11px] text-[#667482] mt-0.5 leading-snug">{p.description}</p>
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })}
-              </div>
+              </motion.div>
             </div>
 
             <div className="mt-6 pt-4 border-t border-[#E3E9EF] text-xs text-[#667482] flex items-center justify-between">
@@ -399,7 +488,7 @@ export default function MarketingLandingPage() {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                <div className="p-4 rounded-xl bg-[#17232D] border border-[#263746]">
+                <div className="p-4 rounded-xl bg-[#17232D] border border-[#263746] hover:border-[#20B8A5]/40 transition-colors">
                   <div className="flex items-center gap-2 text-xs font-semibold text-[#20B8A5] mb-1">
                     <Target className="w-4 h-4" />
                     <span>Single Customer Record</span>
@@ -409,7 +498,7 @@ export default function MarketingLandingPage() {
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#17232D] border border-[#263746]">
+                <div className="p-4 rounded-xl bg-[#17232D] border border-[#263746] hover:border-[#2F80ED]/40 transition-colors">
                   <div className="flex items-center gap-2 text-xs font-semibold text-[#2F80ED] mb-1">
                     <TrendingUp className="w-4 h-4" />
                     <span>Non-Floating Point Ledger</span>
@@ -419,7 +508,7 @@ export default function MarketingLandingPage() {
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#17232D] border border-[#263746]">
+                <div className="p-4 rounded-xl bg-[#17232D] border border-[#263746] hover:border-[#20B8A5]/40 transition-colors">
                   <div className="flex items-center gap-2 text-xs font-semibold text-[#20B8A5] mb-1">
                     <Zap className="w-4 h-4" />
                     <span>Autonomous Workflow Agents</span>
@@ -429,7 +518,7 @@ export default function MarketingLandingPage() {
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#17232D] border border-[#263746]">
+                <div className="p-4 rounded-xl bg-[#17232D] border border-[#263746] hover:border-[#2F80ED]/40 transition-colors">
                   <div className="flex items-center gap-2 text-xs font-semibold text-[#2F80ED] mb-1">
                     <Bot className="w-4 h-4" />
                     <span>Plain English Copilot</span>
@@ -447,12 +536,19 @@ export default function MarketingLandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* =========================================================================
           SECTION 3: CORE FEATURES (BENTO GRID ARCHITECTURE)
          ========================================================================= */}
-      <section id="features" className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28">
+      <motion.section
+        id="features"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-70px" }}
+        variants={fadeInUp}
+        className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28"
+      >
         <div className="text-center max-w-3xl mx-auto mb-14">
           <Badge variant="accent" size="sm" className="mb-3">
             Core Modules
@@ -465,10 +561,20 @@ export default function MarketingLandingPage() {
           </p>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {/* Bento Grid with staggered reveal and subtle hover depth */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-5"
+        >
           {/* Bento Card 1: CRM & Pipeline (Large, 2 cols) */}
-          <div className="md:col-span-2 rounded-2xl border border-[#E3E9EF] bg-white p-6 sm:p-8 flex flex-col justify-between shadow-2xs hover:shadow-card transition-shadow">
+          <motion.div
+            variants={cardItem}
+            whileHover={shouldReduceMotion ? {} : { y: -3 }}
+            className="md:col-span-2 rounded-2xl border border-[#E3E9EF] bg-white p-6 sm:p-8 flex flex-col justify-between shadow-2xs hover:shadow-card transition-all"
+          >
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="w-10 h-10 rounded-xl bg-[#EBF3FC] text-[#2F80ED] flex items-center justify-center">
@@ -508,10 +614,14 @@ export default function MarketingLandingPage() {
               </Link>
               <span className="text-[#667482] font-normal text-[11px]">360° Customer Profiles</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Bento Card 2: Financial Ledger (1 col) */}
-          <div className="rounded-2xl border border-[#E3E9EF] bg-white p-6 sm:p-8 flex flex-col justify-between shadow-2xs hover:shadow-card transition-shadow">
+          <motion.div
+            variants={cardItem}
+            whileHover={shouldReduceMotion ? {} : { y: -3 }}
+            className="rounded-2xl border border-[#E3E9EF] bg-white p-6 sm:p-8 flex flex-col justify-between shadow-2xs hover:shadow-card transition-all"
+          >
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="w-10 h-10 rounded-xl bg-[#E8F8F6] text-[#20B8A5] flex items-center justify-center">
@@ -542,10 +652,14 @@ export default function MarketingLandingPage() {
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
-          </div>
+          </motion.div>
 
           {/* Bento Card 3: Invoicing & Collections (1 col) */}
-          <div className="rounded-2xl border border-[#E3E9EF] bg-white p-6 sm:p-8 flex flex-col justify-between shadow-2xs hover:shadow-card transition-shadow">
+          <motion.div
+            variants={cardItem}
+            whileHover={shouldReduceMotion ? {} : { y: -3 }}
+            className="rounded-2xl border border-[#E3E9EF] bg-white p-6 sm:p-8 flex flex-col justify-between shadow-2xs hover:shadow-card transition-all"
+          >
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="w-10 h-10 rounded-xl bg-[#EBF3FC] text-[#2F80ED] flex items-center justify-center">
@@ -573,10 +687,14 @@ export default function MarketingLandingPage() {
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
-          </div>
+          </motion.div>
 
           {/* Bento Card 4: Autonomous Agents (1 col) */}
-          <div className="rounded-2xl border border-[#E3E9EF] bg-[#101820] text-[#F7F9FB] p-6 sm:p-8 flex flex-col justify-between shadow-card">
+          <motion.div
+            variants={cardItem}
+            whileHover={shouldReduceMotion ? {} : { y: -3 }}
+            className="rounded-2xl border border-[#E3E9EF] bg-[#101820] text-[#F7F9FB] p-6 sm:p-8 flex flex-col justify-between shadow-card transition-all"
+          >
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="w-10 h-10 rounded-xl bg-[#17232D] text-[#20B8A5] flex items-center justify-center border border-[#263746]">
@@ -598,10 +716,14 @@ export default function MarketingLandingPage() {
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
-          </div>
+          </motion.div>
 
           {/* Bento Card 5: Daily Operations & Tasks (1 col) */}
-          <div className="rounded-2xl border border-[#E3E9EF] bg-white p-6 sm:p-8 flex flex-col justify-between shadow-2xs hover:shadow-card transition-shadow">
+          <motion.div
+            variants={cardItem}
+            whileHover={shouldReduceMotion ? {} : { y: -3 }}
+            className="rounded-2xl border border-[#E3E9EF] bg-white p-6 sm:p-8 flex flex-col justify-between shadow-2xs hover:shadow-card transition-all"
+          >
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="w-10 h-10 rounded-xl bg-[#F0F4F8] text-[#17212B] flex items-center justify-center">
@@ -621,14 +743,21 @@ export default function MarketingLandingPage() {
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
+          </motion.div>
+        </motion.div>
+      </motion.section>
 
       {/* =========================================================================
           SECTION 4: DEDICATED CRM SPOTLIGHT (#crm)
          ========================================================================= */}
-      <section id="crm" className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28">
+      <motion.section
+        id="crm"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-70px" }}
+        variants={fadeInUp}
+        className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28"
+      >
         <div className="rounded-3xl border border-[#E3E9EF] bg-white p-8 sm:p-12 shadow-sm">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-8 border-b border-[#E3E9EF]">
             <div className="space-y-2">
@@ -670,12 +799,19 @@ export default function MarketingLandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* =========================================================================
           SECTION 5: DEDICATED FINANCE & INVOICING SPOTLIGHT (#finance)
          ========================================================================= */}
-      <section id="finance" className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28">
+      <motion.section
+        id="finance"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-70px" }}
+        variants={fadeInUp}
+        className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28"
+      >
         <div className="rounded-3xl border border-[#E3E9EF] bg-[#101820] text-[#F7F9FB] p-8 sm:p-12 shadow-card">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-8 border-b border-[#263746]">
             <div className="space-y-2">
@@ -726,12 +862,19 @@ export default function MarketingLandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* =========================================================================
           SECTION 6: AI INTELLIGENCE SIMULATION (#ai)
          ========================================================================= */}
-      <section id="ai" className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28">
+      <motion.section
+        id="ai"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-70px" }}
+        variants={fadeInUp}
+        className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28"
+      >
         <div className="text-center max-w-3xl mx-auto mb-12">
           <Badge variant="accent" size="sm" className="mb-3">
             Intelligent Copilot & Autonomous Agents
@@ -746,12 +889,18 @@ export default function MarketingLandingPage() {
 
         {/* Live Interactive Simulation Widget */}
         <AIChatSimulation />
-      </section>
+      </motion.section>
 
       {/* =========================================================================
           SECTION 7: HOW NEXORA WORKS (4-STEP TIMELINE)
          ========================================================================= */}
-      <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-70px" }}
+        variants={fadeInUp}
+        className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+      >
         <div className="text-center max-w-3xl mx-auto mb-14">
           <Badge variant="secondary" size="sm" className="mb-3">
             Simple 4-Step Architecture
@@ -761,7 +910,13 @@ export default function MarketingLandingPage() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-4 gap-6 relative"
+        >
           {[
             {
               step: "01",
@@ -784,9 +939,11 @@ export default function MarketingLandingPage() {
               description: "Autonomous agents monitor payment deadlines, summarize cash flow, and draft personalized follow-ups.",
             },
           ].map((item, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="rounded-2xl border border-[#E3E9EF] bg-white p-6 shadow-2xs relative flex flex-col justify-between"
+              variants={cardItem}
+              whileHover={shouldReduceMotion ? {} : { y: -3 }}
+              className="rounded-2xl border border-[#E3E9EF] bg-white p-6 shadow-2xs relative flex flex-col justify-between transition-all"
             >
               <div>
                 <div className="text-2xl font-bold text-[#2F80ED] font-mono mb-3">
@@ -803,15 +960,22 @@ export default function MarketingLandingPage() {
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>Zero configuration friction</span>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* =========================================================================
           SECTION 8: SOLUTIONS BY INDUSTRY (#solutions)
          ========================================================================= */}
-      <section id="solutions" className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28">
+      <motion.section
+        id="solutions"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-70px" }}
+        variants={fadeInUp}
+        className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28"
+      >
         <div className="text-center max-w-3xl mx-auto mb-12">
           <Badge variant="accent" size="sm" className="mb-3">
             Tailored Solutions
@@ -842,49 +1006,65 @@ export default function MarketingLandingPage() {
           ))}
         </div>
 
-        {/* Selected Solution Display Card */}
-        <div className="rounded-3xl border border-[#E3E9EF] bg-white p-6 sm:p-10 shadow-sm max-w-4xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-[#E3E9EF]">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <Badge variant="accent" size="sm">Tailored for {currentSolution.title}</Badge>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#17212B]">
-                {currentSolution.headline}
-              </h3>
-            </div>
-            <Link href="/app">
-              <Button variant="dark" size="sm">
-                Explore Workflow
-              </Button>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
-            <div>
-              <p className="text-xs sm:text-sm text-[#667482] leading-relaxed">
-                {currentSolution.description}
-              </p>
-            </div>
-            <div className="space-y-3">
-              <span className="text-xs font-semibold text-[#667482] uppercase tracking-wider block">
-                Key Platform Capabilities
-              </span>
-              {currentSolution.benefits.map((benefit, i) => (
-                <div key={i} className="flex items-start gap-2.5 text-xs text-[#17212B]">
-                  <CheckCircle2 className="w-4 h-4 text-[#20B8A5] shrink-0 mt-0.5" />
-                  <span>{benefit}</span>
+        {/* Selected Solution Display Card with cross-fade */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSolution.id}
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -10 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="rounded-3xl border border-[#E3E9EF] bg-white p-6 sm:p-10 shadow-sm max-w-4xl mx-auto"
+          >
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-[#E3E9EF]">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <Badge variant="accent" size="sm">Tailored for {currentSolution.title}</Badge>
                 </div>
-              ))}
+                <h3 className="text-xl sm:text-2xl font-bold text-[#17212B]">
+                  {currentSolution.headline}
+                </h3>
+              </div>
+              <Link href="/app">
+                <Button variant="dark" size="sm">
+                  Explore Workflow
+                </Button>
+              </Link>
             </div>
-          </div>
-        </div>
-      </section>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+              <div>
+                <p className="text-xs sm:text-sm text-[#667482] leading-relaxed">
+                  {currentSolution.description}
+                </p>
+              </div>
+              <div className="space-y-3">
+                <span className="text-xs font-semibold text-[#667482] uppercase tracking-wider block">
+                  Key Platform Capabilities
+                </span>
+                {currentSolution.benefits.map((benefit, i) => (
+                  <div key={i} className="flex items-start gap-2.5 text-xs text-[#17212B]">
+                    <CheckCircle2 className="w-4 h-4 text-[#20B8A5] shrink-0 mt-0.5" />
+                    <span>{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </motion.section>
 
       {/* =========================================================================
           SECTION 9: PRICING PLANS (#pricing)
          ========================================================================= */}
-      <section id="pricing" className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28">
+      <motion.section
+        id="pricing"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-70px" }}
+        variants={fadeInUp}
+        className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-28"
+      >
         <div className="text-center max-w-3xl mx-auto mb-10">
           <Badge variant="accent" size="sm" className="mb-3">
             Transparent Pricing
@@ -926,14 +1106,22 @@ export default function MarketingLandingPage() {
           </div>
         </div>
 
-        {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Pricing Cards Grid with hover elevation */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {pricingPlans.map((plan) => {
             const isPopular = plan.popular;
 
             return (
-              <div
+              <motion.div
                 key={plan.name}
+                variants={cardItem}
+                whileHover={shouldReduceMotion ? {} : { y: -4 }}
                 className={cn(
                   "rounded-2xl p-6 flex flex-col justify-between transition-all relative border",
                   isPopular
@@ -1004,16 +1192,23 @@ export default function MarketingLandingPage() {
                     {plan.cta}
                   </Button>
                 </Link>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* =========================================================================
           SECTION 10: FREQUENTLY ASKED QUESTIONS (#faq)
          ========================================================================= */}
-      <section id="faq" className="px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto scroll-mt-28">
+      <motion.section
+        id="faq"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-70px" }}
+        variants={fadeInUp}
+        className="px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto scroll-mt-28"
+      >
         <div className="text-center mb-12">
           <Badge variant="secondary" size="sm" className="mb-3">
             Got Questions?
@@ -1033,7 +1228,7 @@ export default function MarketingLandingPage() {
               <div
                 key={idx}
                 className={cn(
-                  "rounded-2xl border bg-white overflow-hidden transition-all shadow-2xs",
+                  "rounded-2xl border bg-white overflow-hidden transition-colors shadow-2xs",
                   isOpen ? "border-[#2F80ED]" : "border-[#E3E9EF]"
                 )}
               >
@@ -1050,21 +1245,38 @@ export default function MarketingLandingPage() {
                     )}
                   />
                 </button>
-                {isOpen && (
-                  <div className="px-5 pb-5 text-xs sm:text-sm text-[#667482] leading-relaxed border-t border-[#E3E9EF] pt-3">
-                    {faq.a}
-                  </div>
-                )}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      key="content"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-5 pb-5 text-xs sm:text-sm text-[#667482] leading-relaxed border-t border-[#E3E9EF] pt-3">
+                        {faq.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}
         </div>
-      </section>
+      </motion.section>
 
       {/* =========================================================================
           SECTION 11: FINAL CALL TO ACTION
          ========================================================================= */}
-      <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-70px" }}
+        variants={fadeInUp}
+        className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+      >
         <div className="rounded-3xl bg-[#101820] text-[#F7F9FB] p-8 sm:p-14 lg:p-20 text-center relative overflow-hidden shadow-2xl border border-[#17232D]">
           {/* Subtle architectural grid lines */}
           <div
@@ -1093,23 +1305,27 @@ export default function MarketingLandingPage() {
 
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link href="/signup">
-                <Button
-                  variant="primary"
-                  size="lg"
-                  className="w-full sm:w-auto px-8 bg-[#2F80ED] hover:bg-[#1E65D0] text-white shadow-xs font-semibold"
-                  rightIcon={<ArrowRight className="w-4 h-4" />}
-                >
-                  Get Started Free
-                </Button>
+                <motion.div whileHover={shouldReduceMotion ? {} : { scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    className="w-full sm:w-auto px-8 bg-[#2F80ED] hover:bg-[#1E65D0] text-white shadow-xs font-semibold"
+                    rightIcon={<ArrowRight className="w-4 h-4" />}
+                  >
+                    Get Started Free
+                  </Button>
+                </motion.div>
               </Link>
               <Link href="/app">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="w-full sm:w-auto px-8 bg-[#17232D] border-[#263746] text-[#F7F9FB] hover:bg-[#202E3B] hover:text-white"
-                >
-                  Explore Demo App
-                </Button>
+                <motion.div whileHover={shouldReduceMotion ? {} : { scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="w-full sm:w-auto px-8 bg-[#17232D] border-[#263746] text-[#F7F9FB] hover:bg-[#202E3B] hover:text-white"
+                  >
+                    Explore Demo App
+                  </Button>
+                </motion.div>
               </Link>
             </div>
 
@@ -1118,7 +1334,7 @@ export default function MarketingLandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

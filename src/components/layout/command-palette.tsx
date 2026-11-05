@@ -6,6 +6,7 @@ import {
   Search,
   LayoutDashboard,
   Bot,
+  Sparkles,
   UserPlus,
   Users,
   Kanban,
@@ -55,6 +56,13 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       category: "Navigation",
       icon: Bot,
       href: "/ai-assistant",
+    },
+    {
+      id: "nav-agents",
+      title: "AI Agents & Autonomous Workflows",
+      category: "Navigation",
+      icon: Sparkles,
+      href: "/ai-agents",
     },
     {
       id: "nav-leads",

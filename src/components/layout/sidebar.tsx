@@ -66,6 +66,13 @@ const navSections: NavSectionDef[] = [
         badge: "AI",
         badgeVariant: "indigo",
       },
+      {
+        title: "AI Agents",
+        href: "/ai-agents",
+        icon: Sparkles,
+        badge: "5",
+        badgeVariant: "success",
+      },
     ],
   },
   {

@@ -17,6 +17,7 @@ import {
   Receipt,
   CreditCard,
   CheckSquare,
+  Bell,
   BarChart3,
   TrendingUp,
   Settings,
@@ -51,7 +52,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       title: "Go to Dashboard",
       category: "Navigation",
       icon: LayoutDashboard,
-      href: "/",
+      href: "/app",
     },
     {
       id: "nav-ai",
@@ -117,6 +118,20 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       href: "/finance/expenses",
     },
     {
+      id: "nav-tasks",
+      title: "Operational Tasks",
+      category: "Navigation",
+      icon: CheckSquare,
+      href: "/operations/tasks",
+    },
+    {
+      id: "nav-reminders",
+      title: "System Reminders & Deadlines",
+      category: "Navigation",
+      icon: Bell,
+      href: "/operations/reminders",
+    },
+    {
       id: "nav-reports",
       title: "Business Reports",
       category: "Navigation",
@@ -178,6 +193,20 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       category: "Quick Actions",
       icon: PlusCircle,
       action: () => router.push("/finance/expenses"),
+    },
+    {
+      id: "act-task",
+      title: "Create Operational Task",
+      category: "Quick Actions",
+      icon: PlusCircle,
+      action: () => router.push("/operations/tasks"),
+    },
+    {
+      id: "act-reminder",
+      title: "Add System Reminder",
+      category: "Quick Actions",
+      icon: PlusCircle,
+      action: () => router.push("/operations/reminders"),
     },
   ];
 
